@@ -119,7 +119,7 @@
                     <div class="card-body p-0">
                         <table class="table table-hover mb-0">
                             <thead><tr><th>No</th><th>Nama File</th><th>URL</th><th>Aksi</th></tr></thead>
-                            <tbody id="tableDataBody"><tr><td colspan="4" class="text-center">Klik Refresh</td></tr></tbody>
+                            <tbody id="tableDataBody"><tr><td colspan="4" class="text-center">Klik Refresh</div></div></tr>
                         </table>
                     </div>
                 </div>
@@ -167,19 +167,305 @@
     </div>
 </div>
 
-<!-- Template halaman sales (ringkas) -->
+<!-- TEMPLATE LENGKAP SEPERTI INDEX.HTML dengan PLACEHOLDER -->
 <script id="html-template" type="text/plain">
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>{{SEO_TITLE}}</title><meta name="description" content="{{SEO_DESC}}"><meta property="og:image" content="{{PROFILE_PIC_PATH}}"></head><body><h1>{{SALES_NAME}}</h1><p>WA: {{WA_NUMBER}}</p><img src="{{PROFILE_PIC_PATH}}"></body></html>
+<!DOCTYPE html><html data-bs-theme="light" lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>{{SEO_TITLE}}</title><link rel="canonical" href="https://nana-mpmmadiun.my.id/"><meta property="og:url" content="https://nana-mpmmadiun.my.id/"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="{{SEO_TITLE}}"><meta property="og:image" content="{{PROFILE_PIC_URL}}"><meta name="twitter:description" content="{{SEO_DESC}}"><meta name="description" content="{{SEO_DESC}}"><meta property="og:description" content="{{SEO_DESC}}"><meta name="twitter:image" content="{{PROFILE_PIC_URL}}"><meta name="twitter:title" content="{{SEO_TITLE}}">
+			<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","name":"{{SEO_TITLE}}","url":"https://nana-mpmmadiun.my.id"}</script><link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp"><link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp"><link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp"><link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp"><link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp"><link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;subset=latin-ext&amp;display=swap"><link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css"><link rel="stylesheet" href="assets/css/animate.min.css"><link rel="stylesheet" href="assets/css/index.css"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-77L1Q3KWFE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-77L1Q3KWFE');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head><body style="font-family: Poppins, sans-serif;"><nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3 navbar-custom"><div class="container"><a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#"><img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/assets/images/logo/honda.svg" alt="Honda" width="170" height="28" style="height: auto;"></a><button class="btn d-lg-none px-3 py-1 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="font-size: 16px;">Cek Kredit</button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav align-items-center ms-auto"><li class="nav-item"><a class="nav-link fw-medium" data-bs-target="#simulasi-kredit" data-bs-toggle="modal" href="#">Cek Simulasi</a></li><li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn w-100 btn-custom-primary" role="button" href="https://wa.me/{{WA_NUMBER}}" target="_blank" style="font-size: 16px;"><i class="fab fa-whatsapp me-2"></i>Hubungi {{SALES_NAME}}</a></li></ul></div></div></nav><div class="hero-bg"></div><div class="container text-center d-flex flex-column justify-content-center align-items-center mb-5 profile-wrapper"><div><div style="position: absolute;margin-top: 106px;margin-right: 0px;margin-left: 158px;"><span class="badge" style="position: absolute;bottom: 0px;background: rgb(0,200,20);padding-top: 6.2px;padding-bottom: 6.2px;padding-right: 5.8px;padding-left: 5.8px;border-radius: 16px;"><span class="spinner-grow spinner-grow-sm" role="status" style="width: 10px;height: 10px;margin-right: 3px;"></span>Online</span></div><img id="profilePic" src="{{PROFILE_PIC_URL}}" alt="{{SALES_NAME}}" class="profile-img"></div><h3 class="fw-bold mt-3 mb-0">{{SALES_NAME}}</h3><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;"><i class="fas fa-id-card-alt me-2"></i>Dealer MPM Motor Madiun</p><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Melayani pembelian sepeda motor secara cash &amp; credit.</p><div class="d-flex justify-content-center flex-wrap gap-3 mt-4" style="max-width: 600px;width: 100%;padding: 16px;background: #ededed;border-radius: 30px;"><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Cek simulasi kredit sekarang</p><button class="btn shadow-sm px-4 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="width: 100%;"><i class="fas fa-calculator me-2"></i>Simulasi Kredit            </button><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Konsultasi via whatsapp</p><a class="btn shadow-sm px-4 btn-custom-primary" role="button" style="width: 100%;" href="https://api.whatsapp.com/send/?phone={{WA_NUMBER}}&amp;text={{WA_MSG_ENCODED}}"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Buat janji temu via whatsapp</p><a class="btn shadow-sm px-4 btn-custom-primary" role="button" style="width: 100%;" href="janji-temu.html"><i class="fas fa-th-list me-2"></i>Buat Janji Temu</a></div></div><div class="container mb-5"><div class="d-flex flex-column justify-content-between gap-3 flex-md-row align-items-md-center mb-3"><h3 class="fw-bold mb-0"><i class="text-danger me-2 bi bi-motorcycle"></i>Katalog Motor</h3><div class="input-group bg-white border rounded-pill shadow-sm overflow-hidden search-container" style="max-width:350px;"><span class="text-muted bg-transparent border-0 ps-3 input-group-text"><svg class="bi bi-search" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+</svg></span><input class="bg-transparent border-0 form-control py-2" type="text" id="searchKatalog" placeholder="Cari motor impianmu..." onkeyup="filterKatalog()"></div></div><div class="d-flex overflow-auto gap-2 mb-3 pb-3 hide-scrollbar" id="categoryTabs"></div><div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-4" id="katalogMotorContainer"><div class="col-12" id="loadingKatalog" style="width: 100%;position: absolute;"><div class="card text-muted text-center shadow-sm h-100 p-3 motor-card"><p style="margin-bottom: 0px;"><span class="spinner-border spinner-border-sm" role="status" style="margin-right: 5px;"></span>Harap tunggu..</p></div></div></div></div><footer class="text-center text-white bg-dark py-4" style="margin-top: 86px;"><p class="text-white-50 mb-0" style="font-size: 15px;">© 2026 Triana MPM Motor Madiun</p></footer><div class="modal fade" role="dialog" tabindex="-1" id="simulasi-kredit" style="font-size: 16px;"><div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document"><div class="modal-content border-0 shadow-lg" style="border-radius:20px;"><div class="modal-header border-0 pb-0"><h5 class="modal-title fw-bold text-dark"><svg class="bi bi-calculator-fill text-danger me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"></path>
+</svg>Simulasi Kredit</h5><button class="btn-close bg-light rounded-circle p-2" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body pt-3"><div class="text-center bg-light rounded-4 my-4 py-4" id="loadingData"><span class="spinner-border spinner-border-sm" role="status"></span><p class="small text-muted mt-2 mb-0">Harap Tunggu</p></div><form id="kreditForm" style="display: none;"><div class="mb-3"><label class="form-label small fw-semibold text-muted">Kategori Motor</label><select class="bg-light form-select form-select-lg" disabled="" id="jenisMotor" required="" style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Memuat...</option></select></div><div class="mb-3"><label class="form-label small fw-semibold text-muted">Tipe Motor</label><select class="bg-light form-select form-select-lg" disabled="" id="tipeMotor" required="" style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Pilih Kategori Dulu</option></select></div><div class="mb-4"><label class="form-label small fw-semibold text-muted">Uang Muka</label><select class="bg-light form-select form-select-lg" disabled="" id="dp" required="" style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Pilih Tipe Motor Dulu</option></select></div><button class="btn rounded-4 w-100 py-3 btn-custom-primary" type="button" onclick="calculateInstallment()">Hitung Angsuran</button></form><div id="result" style="display: none;margin-top: 24px;"><h6 class="fw-bold text-center mb-3" id="resMotor" style="font-size: 25px;">Motor</h6><div class="text-center mb-3"><img class="img-fluid rounded-3" id="resGambar" alt="Motor" src="" style="max-height: 300px;object-fit: contain;"></div><div class="result-box" style="margin-bottom: 16px;"><div class="result-row"><span class="text-muted">Uang Muka</span><strong class="text-danger" id="resDP"></strong></div><hr class="my-2 border-secondary border-opacity-25"><div class="result-row"><span class="text-muted">Tenor 12x</span><strong id="res12"></strong></div><div class="result-row"><span class="text-muted">Tenor 18x</span><strong id="res18"></strong></div><div class="result-row"><span class="text-muted">Tenor 24x</span><strong id="res24"></strong></div><div class="result-row"><span class="text-muted">Tenor 30x</span><strong id="res30"></strong></div><div class="result-row"><span class="text-muted">Tenor 36x</span><strong id="res36"></strong></div></div><div class="text-center mt-4"><p class="small text-muted mb-2">Silahkan screenshoot atau klik tombol Ajukan sekarang!</p><p class="small mb-2" style="color: rgba(193,0,0,0.75);">Harga dapat berubah rubah*</p></div><img class="img-fluid" width="2433" height="1400" src="assets/img/galeri/OG-Nana.webp" style="border-radius: 16px;width: 100%;"><div class="text-center mt-4"><p class="small text-muted mb-2">Alamat Dealer Jl. Panglima Sudirman no.91 Taman, Kota Madiun</p><p class="small mb-2" style="color: rgba(193,0,0,0.75);">Untuk menanyakan produk yang di pilih, klik ajukan sekarang</p><button class="btn btn-success fw-bold rounded-4 shadow-sm w-100 py-3 pulse animated infinite" onclick="sendWhatsApp()"><svg class="bi bi-whatsapp me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+</svg>TANYAKAN PRODUK</button><button class="btn btn-light rounded-4 w-100 mt-2 py-2 text-secondary" onclick="resetFormModal()">Hitung Ulang</button></div></div></div></div></div></div><script>
+    // --- URL GOOGLE APPS SCRIPT ---
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyE3IoDDgE0cG_aWDvq5K02aDoHC9gv4hFFlCehnp3N_7GwmhZiq10qErL0XApV8mEtbQ/exec'; 
+    let globalData = [];
+    let activeCategory = 'Semua';
+
+    const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+
+    window.onload = async () => {
+        try {
+            const response = await fetch(APPS_SCRIPT_URL, { redirect: "follow" });
+            if (!response.ok) throw new Error("Network response was not ok");
+            
+            globalData = await response.json();
+            
+            document.getElementById('loadingData').style.display = 'none';
+            document.getElementById('kreditForm').style.display = 'block';
+            document.getElementById('loadingKatalog').style.display = 'none';
+            
+            setupDropdowns();
+            renderCategoryTabs();
+            filterKatalog(); // Memanggil filter pertama kali (memuat semua)
+        } catch (error) {
+            console.error("Gagal mengambil data:", error);
+            document.getElementById('loadingData').innerHTML = '<p class="text-danger">Gagal terhubung ke server. Silakan muat ulang halaman.</p>';
+            document.getElementById('loadingKatalog').innerHTML = '<p class="text-danger mt-3">Gagal memuat katalog.</p>';
+            
+            // SweetAlert Error Fetch
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal Memuat Data',
+                text: 'Terjadi masalah saat mengambil data dari server. Silakan coba muat ulang halaman.',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'Muat Ulang',
+                preConfirm: () => {
+                    location.reload();
+                }
+            });
+        }
+    };
+
+    function setupDropdowns() {
+        const jenisSelect = document.getElementById('jenisMotor');
+        const tipeSelect = document.getElementById('tipeMotor');
+        const dpSelect = document.getElementById('dp');
+
+        // Filter data kosong/undefined untuk jenis motor
+        const uniqueJenis = [...new Set(globalData.map(item => item['Jenis Motor']).filter(Boolean))];
+        
+        jenisSelect.innerHTML = '<option value="" disabled selected>-- Pilih Kategori --</option>';
+        uniqueJenis.forEach(jenis => { jenisSelect.innerHTML += `<option value="${jenis}">${jenis}</option>`; });
+        jenisSelect.disabled = false;
+
+        jenisSelect.addEventListener('change', (e) => {
+            const val = e.target.value;
+            tipeSelect.innerHTML = '<option value="" disabled selected>-- Pilih Tipe Motor --</option>';
+            dpSelect.innerHTML = '<option value="" disabled selected>-- Pilih Tipe Dulu --</option>';
+            dpSelect.disabled = true;
+
+            if (val) {
+                const uniqueTipe = [...new Set(globalData.filter(i => i['Jenis Motor'] === val).map(i => i['Tipe Motor']))];
+                uniqueTipe.forEach(tipe => { tipeSelect.innerHTML += `<option value="${tipe}">${tipe}</option>`; });
+                tipeSelect.disabled = false;
+            }
+        });
+
+        tipeSelect.addEventListener('change', (e) => {
+            const jenis = jenisSelect.value;
+            const tipe = e.target.value;
+            dpSelect.innerHTML = '<option value="" disabled selected>-- Pilih Nominal DP --</option>';
+
+            if (tipe) {
+                const filteredDP = globalData
+                    .filter(i => i['Jenis Motor'] === jenis && i['Tipe Motor'] === tipe)
+                    .sort((a, b) => Number(a['Uang Muka']) - Number(b['Uang Muka']));
+                
+                filteredDP.forEach(item => { 
+                    dpSelect.innerHTML += `<option value="${item['Uang Muka']}">${formatRp(item['Uang Muka'])}</option>`; 
+                });
+                dpSelect.disabled = false;
+            }
+        });
+    }
+
+    function calculateInstallment() {
+        const jenis = document.getElementById('jenisMotor').value;
+        const tipe = document.getElementById('tipeMotor').value;
+        const dp = document.getElementById('dp').value;
+
+        // --- GANTI ALERT DENGAN SWEETALERT ---
+        if(!jenis || !tipe || !dp) { 
+            Swal.fire({
+                icon: 'warning',
+                title: 'Data Belum Lengkap',
+                text: 'Mohon lengkapi pilihan Jenis, Tipe, dan Uang Muka sebelum melanjutkan.',
+                confirmButtonColor: '#d33', // Merah sesuai tema
+                confirmButtonText: 'OK'
+            });
+            return; 
+        }
+
+        const result = globalData.find(i => i['Jenis Motor'] === jenis && i['Tipe Motor'] === tipe && i['Uang Muka'].toString() === dp);
+
+        if(result) {
+            const imgUrl = result['URL Gambar'] ? result['URL Gambar'] : 'https://via.placeholder.com/400x300?text=Gambar+Belum+Tersedia';
+            document.getElementById('resGambar').src = imgUrl;
+
+            document.getElementById('resMotor').innerText = `${result['Tipe Motor']}`;
+            document.getElementById('resDP').innerText = formatRp(result['Uang Muka']);
+            document.getElementById('res12').innerText = formatRp(result['12 Bulan']) + ' /bln';
+            document.getElementById('res18').innerText = formatRp(result['18 Bulan']) + ' /bln';
+            document.getElementById('res24').innerText = formatRp(result['24 Bulan']) + ' /bln';
+            document.getElementById('res30').innerText = formatRp(result['30 Bulan']) + ' /bln';
+            document.getElementById('res36').innerText = formatRp(result['36 Bulan']) + ' /bln';
+            
+            document.getElementById('kreditForm').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+        } else {
+            // Fallback jika data tidak ditemukan (jarang terjadi jika dropdown benar)
+            Swal.fire({
+                icon: 'error',
+                title: 'Data Tidak Ditemukan',
+                text: 'Maaf, data simulasi untuk kombinasi ini tidak tersedia.',
+                confirmButtonColor: '#d33'
+            });
+        }
+    }
+
+    function resetFormModal() {
+        document.getElementById('result').style.display = 'none';
+        document.getElementById('kreditForm').style.display = 'block';
+    }
+
+    function sendWhatsApp() {
+        const motor = document.getElementById('resMotor').innerText;
+        const dp = document.getElementById('resDP').innerText;
+        
+        const message = `Halo Kak {{SALES_NAME}},\nSaya tertarik mengajukan kredit untuk motor *${motor}*.\nRencana Uang Muka (DP): *${dp}*.\n\nMohon informasi persyaratannya. Terima kasih!`;
+        
+        // Opsional: Konfirmasi sebelum kirim WA (supaya lebih interaktif)
+        Swal.fire({
+            title: 'Hubungi Sales?',
+            text: "Anda akan diarahkan ke WhatsApp untuk mengirim pesan ini.",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#25D366', // Warna Hijau WA
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Kirim WA',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.open(`https://wa.me/{{WA_NUMBER}}?text=${encodeURIComponent(message)}`, '_blank');
+            }
+        });
+    }
+
+    // Fungsi Render Tab Kategori
+    function renderCategoryTabs() {
+        const tabsContainer = document.getElementById('categoryTabs');
+        const uniqueCategories = [...new Set(globalData.map(item => item['Jenis Motor']).filter(val => val !== undefined && val !== ""))];
+        const categories = ['Semua', ...uniqueCategories];
+
+        if(tabsContainer) {
+            tabsContainer.innerHTML = categories.map(cat => `
+                <button class="btn tab-btn ${cat === activeCategory ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>
+            `).join('');
+        }
+    }
+
+    // Fungsi Mengatur Kategori yang Aktif
+    function setCategory(cat) {
+        activeCategory = cat;
+        renderCategoryTabs(); // Perbarui kelas 'active' pada tab
+        filterKatalog(); // Terapkan penyaringan
+    }
+
+    // Fungsi Filter Data berdasarkan Kategori & Pencarian
+    function filterKatalog() {
+        const searchInput = document.getElementById('searchKatalog');
+        const keyword = searchInput ? searchInput.value.toLowerCase() : '';
+        
+        const filteredData = globalData.filter(item => {
+            const tipe = (item['Tipe Motor'] || '').toLowerCase();
+            const jenis = (item['Jenis Motor'] || '');
+            
+            // Logika Pencarian Nama/Tipe
+            const matchSearch = tipe.includes(keyword) || jenis.toLowerCase().includes(keyword);
+            // Logika Tab Kategori
+            const matchCategory = activeCategory === 'Semua' || jenis === activeCategory;
+
+            return matchSearch && matchCategory;
+        });
+        
+        renderCatalog(filteredData);
+    }
+
+    // Fungsi Render Katalog
+    function renderCatalog(dataArray) {
+        const container = document.getElementById('katalogMotorContainer');
+        if(!container) return;
+        
+        container.innerHTML = '';
+        
+        const uniqueTipe = [];
+        const catalogItems = dataArray.filter(item => {
+            if(!uniqueTipe.includes(item['Tipe Motor'])) {
+                uniqueTipe.push(item['Tipe Motor']);
+                return true;
+            }
+            return false;
+        });
+
+        if(catalogItems.length === 0) {
+            container.innerHTML = `
+                <div class="col-12 text-center text-muted py-5">
+                    <i class="bi bi-search fs-1 text-secondary opacity-50 mb-3 d-block"></i>
+                    <p>Kendaraan tidak ditemukan di kategori ini.</p>
+                </div>`;
+            return;
+        }
+
+        catalogItems.forEach(item => {
+            let imgUrl = item['URL Gambar'] ? item['URL Gambar'] : 'https://via.placeholder.com/400x300?text=No+Image';
+            let card = `
+                <div class="col">
+                    <div class="card motor-card shadow-sm h-100 border-0">
+                        <div class="motor-img-wrapper">
+                            <img src="${imgUrl}" class="img-fluid" style="height: 180px; object-fit: contain;" alt="${item['Tipe Motor']}">
+                        </div>
+                        <div class="card-body bg-white text-center position-relative">
+                            <span class="badge bg-danger position-absolute top-0 start-50 translate-middle rounded-pill px-3 py-2 shadow-sm">${item['Jenis Motor']}</span>
+                            <h5 class="card-title judul fw-bold mt-2 mb-1">${item['Tipe Motor']}</h5>
+                            <p class="text-muted small fw-medium mb-3">Cash: ${formatRp(item['Harga OTR'])}</p>
+                            <button class="btn btn-outline-danger w-100 rounded-pill fw-bold" onclick="openSimulasi('${item['Jenis Motor']}', '${item['Tipe Motor']}')">
+                                Cek Cicilan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += card;
+        });
+    }
+
+    function openSimulasi(jenis, tipe) {
+        // Asumsi menggunakan Bootstrap Modal
+        const modalElement = document.getElementById('simulasi-kredit');
+        if (modalElement) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+            resetFormModal();
+            
+            setTimeout(() => {
+                const jenisInput = document.getElementById('jenisMotor');
+                if(jenisInput) {
+                    jenisInput.value = jenis;
+                    jenisInput.dispatchEvent(new Event('change'));
+                    
+                    setTimeout(() => {
+                        const tipeInput = document.getElementById('tipeMotor');
+                        if(tipeInput) {
+                            tipeInput.value = tipe;
+                            tipeInput.dispatchEvent(new Event('change'));
+                        }
+                    }, 100);
+                }
+            }, 300);
+        } else {
+             Swal.fire('Error', 'Modal element tidak ditemukan', 'error');
+        }
+    }
+</script><script src="assets/bootstrap/js/bootstrap.min.js"></script><script src="assets/js/bs-init.js"></script></body></html>
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Sidebar toggle
+    // ==================== UI & Navigation ====================
     document.getElementById('sidebarCollapse').addEventListener('click', function() {
         document.getElementById('sidebar').classList.toggle('collapsed');
     });
 
-    // Switch view
     function switchView(viewId, element) {
         document.querySelectorAll('.section-view').forEach(el => el.classList.remove('active'));
         const target = document.getElementById('view-' + viewId);
@@ -191,7 +477,7 @@
         if (viewId === 'list') loadPagesList();
     }
 
-    // Konfigurasi
+    // ==================== Konfigurasi GitHub ====================
     function checkConfigStatus() {
         const token = localStorage.getItem('ghToken');
         const owner = localStorage.getItem('ghOwner');
@@ -225,7 +511,7 @@
         return `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${path || ''}`;
     }
 
-    // Upload gambar
+    // ==================== Upload gambar ====================
     async function uploadImage(file, fileName) {
         const c = checkConfigStatus();
         if (!c) throw new Error('Konfigurasi belum diatur');
@@ -250,7 +536,7 @@
         return path;
     }
 
-    // List halaman
+    // ==================== Daftar halaman ====================
     async function loadPagesList() {
         const c = checkConfigStatus();
         if (!c) return;
@@ -262,7 +548,7 @@
             if (!res.ok) throw new Error();
             const files = await res.json();
             const htmlFiles = files.filter(f => f.name.endsWith('.html') && f.name !== 'admin.html');
-            if (htmlFiles.length === 0) tbody.innerHTML = '<tr><td colspan="4" class="text-center">Belum ada halaman</td></tr>';
+            if (htmlFiles.length === 0) tbody.innerHTML = '<tr><td colspan="4" class="text-center">Belum ada halaman</div></div>';
             else {
                 let html = '';
                 htmlFiles.forEach((f, i) => {
@@ -278,7 +564,7 @@
                 });
                 tbody.innerHTML = html;
             }
-        } catch(e) { tbody.innerHTML = '<tr><td colspan="4" class="text-danger">Gagal memuat</td></tr>'; }
+        } catch(e) { tbody.innerHTML = '<tr><td colspan="4" class="text-danger">Gagal memuat</div></div>'; }
         finally { loader.style.display = 'none'; }
     }
 
@@ -336,56 +622,71 @@
         } catch(e) { Swal.fire('Gagal', e.message, 'error'); }
     }
 
+    // ==================== Generate halaman ====================
     async function generateAndPushPage() {
         const c = checkConfigStatus();
         if (!c) return Swal.fire('Error', 'Konfigurasi GitHub belum diatur', 'error');
+
         const slug = document.getElementById('pageSlug').value.trim().toLowerCase();
         const salesName = document.getElementById('salesName').value.trim();
         const waNumber = document.getElementById('waNumber').value.trim();
         const seoTitle = document.getElementById('seoTitle').value.trim();
         const seoDesc = document.getElementById('seoDesc').value.trim();
         const file = document.getElementById('profilePicFile').files[0];
+
         if (!slug || !salesName || !waNumber || !seoTitle || !seoDesc) return Swal.fire('Peringatan', 'Lengkapi semua field', 'warning');
 
         const loader = document.getElementById('loader-form');
         loader.style.display = 'flex';
         try {
-            let profilePicPath = 'assets/img/galeri/default.webp';
+            let profilePicPath = 'assets/img/galeri/default_profile.webp';
             if (file) {
+                const ext = file.name.split('.').pop();
                 profilePicPath = await uploadImage(file, `profile_${slug}_${Date.now()}.webp`);
             } else {
                 const preview = document.getElementById('profilePreview');
                 if (preview.style.display !== 'none' && preview.src) {
                     let src = preview.src;
                     let idx = src.indexOf('/assets/');
-                    if (idx !== -1) profilePicPath = src.substring(idx+1);
+                    if (idx !== -1) profilePicPath = src.substring(idx + 1);
                 }
             }
+
+            // URL absolut untuk gambar (karena nanti dipakai di meta og:image)
+            const profilePicUrl = `https://${c.owner}.github.io/${c.repo}/${profilePicPath}`;
+
             const meta = { slug, salesName, waNumber, seoTitle, seoDesc, profilePicPath };
             let template = document.getElementById('html-template').textContent;
+            let waMsgEncoded = encodeURIComponent(`Halo Kak ${salesName}, saya ingin bertanya tentang promo motor Honda.`);
+
             let html = template
                 .replace(/{{SEO_TITLE}}/g, seoTitle)
                 .replace(/{{SEO_DESC}}/g, seoDesc)
                 .replace(/{{SALES_NAME}}/g, salesName)
                 .replace(/{{WA_NUMBER}}/g, waNumber)
-                .replace(/{{PROFILE_PIC_PATH}}/g, profilePicPath)
-                .replace('{{META_JSON}}', JSON.stringify(meta));
+                .replace(/{{WA_MSG_ENCODED}}/g, waMsgEncoded)
+                .replace(/{{PROFILE_PIC_URL}}/g, profilePicUrl);
+
+            // Sisipkan metadata untuk keperluan edit
             html = `<!-- CMS_META: ${JSON.stringify(meta)} -->\n` + html;
+
             const base64 = btoa(unescape(encodeURIComponent(html)));
             const fileName = `${slug}.html`;
             const url = getApiUrl(fileName);
             let sha = document.getElementById('fileSha').value;
             if (!sha && slug !== document.getElementById('originalSlug').value) sha = null;
+
             const res = await fetch(url, {
                 method: 'PUT',
                 headers: { Authorization: `Bearer ${c.token}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: `CMS: ${sha ? 'Update' : 'Tambah'} ${fileName}`, content: base64, sha })
             });
             if (!res.ok) throw new Error(await res.text());
+
             Swal.fire('Sukses', `Halaman ${fileName} tersimpan`, 'success');
             resetForm();
             switchView('list', document.querySelectorAll('.nav-item')[2]);
-        } catch(e) { Swal.fire('Gagal', e.message, 'error'); }
+        } catch (e) { Swal.fire('Gagal', e.message, 'error'); }
         finally { loader.style.display = 'none'; }
     }
 
