@@ -23,7 +23,6 @@
     
     <style>
         body { font-family: 'Nunito', sans-serif; background-color: #f8f9fc; overflow-x: hidden; }
-        
         #wrapper { display: flex; width: 100%; align-items: stretch; }
         #sidebar { min-width: 250px; max-width: 250px; background: #dc3545; background: linear-gradient(180deg, #dc3545 10%, #a71d2a 100%); transition: all 0.3s; min-height: 100vh; color: white; }
         #sidebar.collapsed { min-width: 0; max-width: 0; overflow: hidden; }
@@ -49,431 +48,612 @@
 </head>
 <body>
 
-    <div id="wrapper">
-        <nav id="sidebar">
-            <div class="sidebar-header d-flex align-items-center justify-content-center gap-2">
-                <i class="fas fa-motorcycle fa-2x"></i>
-                <h4 class="mb-0 fw-bold">MPM CMS</h4>
-            </div>
-            <ul class="list-unstyled components">
-                <li class="nav-item active"><a href="#" onclick="switchView('dashboard', this)"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li class="nav-item"><a href="#" onclick="switchView('form', this); resetForm();"><i class="fas fa-plus-circle"></i> Tambah Baru</a></li>
-                <li class="nav-item"><a href="#" onclick="switchView('list', this)"><i class="fas fa-list"></i> Daftar Halaman</a></li>
-                <li class="nav-item"><a href="#" onclick="switchView('settings', this)"><i class="fas fa-cogs"></i> Pengaturan GitHub</a></li>
+<div id="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header d-flex align-items-center justify-content-center gap-2">
+            <i class="fas fa-motorcycle fa-2x"></i>
+            <h4 class="mb-0 fw-bold">MPM CMS</h4>
+        </div>
+        <ul class="list-unstyled components">
+            <li class="nav-item active"><a href="#" onclick="switchView('dashboard', this)"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="nav-item"><a href="#" onclick="switchView('form', this); resetForm();"><i class="fas fa-plus-circle"></i> Tambah Baru</a></li>
+            <li class="nav-item"><a href="#" onclick="switchView('list', this)"><i class="fas fa-list"></i> Daftar Halaman</a></li>
+            <li class="nav-item"><a href="#" onclick="switchView('settings', this)"><i class="fas fa-cogs"></i> Pengaturan GitHub</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top px-4">
+            <button type="button" id="sidebarCollapse" class="btn btn-link text-danger rounded-circle mr-3"><i class="fa fa-bars"></i></button>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-gray-600" href="index.html" target="_blank"><i class="fas fa-external-link-alt fa-sm fa-fw mr-2 text-gray-400"></i> <span class="ms-1">Lihat Website</span></a></li>
             </ul>
         </nav>
 
-        <div id="content">
-            <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top px-4">
-                <button type="button" id="sidebarCollapse" class="btn btn-link text-danger rounded-circle mr-3"><i class="fa fa-bars"></i></button>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-gray-600" href="index.html" target="_blank"><i class="fas fa-external-link-alt fa-sm fa-fw mr-2 text-gray-400"></i> <span class="ms-1">Lihat Website</span></a></li>
-                </ul>
-            </nav>
-
-            <div class="container-fluid px-4 pb-5">
-                <!-- Dashboard View -->
-                <div id="view-dashboard" class="section-view active">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4"><h1 class="h3 mb-0 text-gray-800">Dashboard</h1></div>
-                    <div class="row">
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card card-custom border-left-danger h-100 py-2" style="border-left: .25rem solid #dc3545!important;">
-                                <div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Status Konfigurasi</div><div class="h5 mb-0 font-weight-bold text-gray-800" id="status-config">Belum Diatur</div></div><div class="col-auto"><i class="fas fa-server fa-2x text-gray-300"></i></div></div></div>
-                            </div>
-                        </div>
-                        <div class="col-xl-8 col-md-6 mb-4">
-                            <div class="card card-custom h-100 p-4"><h5>Selamat Datang di Generator Halaman Sales!</h5><p class="text-muted mb-0">Gunakan menu di sebelah kiri untuk mengatur konfigurasi GitHub, menambahkan halaman sales baru, atau mengedit halaman yang sudah ada.</p><button class="btn btn-outline-danger mt-3 w-50" onclick="switchView('settings', document.querySelectorAll('.nav-item')[3])">Cek Pengaturan</button></div>
+        <!-- Begin Page Content -->
+        <div class="container-fluid px-4 pb-5">
+            <!-- Dashboard View -->
+            <div id="view-dashboard" class="section-view active">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4"><h1 class="h3 mb-0 text-gray-800">Dashboard</h1></div>
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card card-custom border-left-danger h-100 py-2" style="border-left: .25rem solid #dc3545!important;">
+                            <div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Status Konfigurasi</div><div class="h5 mb-0 font-weight-bold text-gray-800" id="status-config">Belum Diatur</div></div><div class="col-auto"><i class="fas fa-server fa-2x text-gray-300"></i></div></div></div>
                         </div>
                     </div>
+                    <div class="col-xl-8 col-md-6 mb-4">
+                        <div class="card card-custom h-100 p-4"><h5>Selamat Datang di Generator Halaman Sales!</h5><p class="text-muted mb-0">Gunakan menu di sebelah kiri untuk mengatur konfigurasi GitHub, menambahkan halaman sales baru, atau mengedit halaman yang sudah ada.</p><button class="btn btn-outline-danger mt-3 w-50" onclick="switchView('settings', document.querySelectorAll('.nav-item')[3])">Cek Pengaturan</button></div>
+                    </div>
                 </div>
+            </div>
 
-                <!-- Settings View -->
-                <div id="view-settings" class="section-view">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4"><h1 class="h3 mb-0 text-gray-800">Pengaturan Server (GitHub)</h1></div>
-                    <div class="row"><div class="col-lg-8"><div class="card card-custom mb-4"><div class="card-header card-header-custom"><i class="fab fa-github me-2"></i> Konfigurasi API</div><div class="card-body"><p class="small text-muted mb-4">Sistem ini menyimpan file langsung ke repository GitHub menggunakan API. Data token hanya disimpan di penyimpanan lokal browser (Local Storage) dan tidak dikirim ke pihak ketiga.</p><div class="mb-3"><label class="form-label fw-bold">GitHub Token (Classic)</label><input type="password" id="ghToken" class="form-control" placeholder="ghp_xxxxxxxxxxxx"></div><div class="row mb-3"><div class="col-md-6"><label class="form-label fw-bold">Username GitHub (Owner)</label><input type="text" id="ghOwner" class="form-control" placeholder="contoh: nama-anda"></div><div class="col-md-6 mt-3 mt-md-0"><label class="form-label fw-bold">Nama Repository</label><input type="text" id="ghRepo" class="form-control" placeholder="contoh: mpm-madiun-web"></div></div><button class="btn btn-dark" onclick="saveConfig()"><i class="fas fa-save me-1"></i> Simpan Konfigurasi</button></div></div></div></div>
-                </div>
+            <!-- Settings View -->
+            <div id="view-settings" class="section-view">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4"><h1 class="h3 mb-0 text-gray-800">Pengaturan Server (GitHub)</h1></div>
+                <div class="row"><div class="col-lg-8"><div class="card card-custom mb-4"><div class="card-header card-header-custom"><i class="fab fa-github me-2"></i> Konfigurasi API</div><div class="card-body"><p class="small text-muted mb-4">Sistem ini menyimpan file langsung ke repository GitHub menggunakan API. Data token hanya disimpan di penyimpanan lokal browser (Local Storage) dan tidak dikirim ke pihak ketiga.</p><div class="mb-3"><label class="form-label fw-bold">GitHub Token (Classic)</label><input type="password" id="ghToken" class="form-control" placeholder="ghp_xxxxxxxxxxxx"></div><div class="row mb-3"><div class="col-md-6"><label class="form-label fw-bold">Username GitHub (Owner)</label><input type="text" id="ghOwner" class="form-control" placeholder="contoh: nama-anda"></div><div class="col-md-6 mt-3 mt-md-0"><label class="form-label fw-bold">Nama Repository</label><input type="text" id="ghRepo" class="form-control" placeholder="contoh: mpm-madiun-web"></div></div><button class="btn btn-dark" onclick="saveConfig()"><i class="fas fa-save me-1"></i> Simpan Konfigurasi</button></div></div></div></div>
+            </div>
 
-                <!-- List View -->
-                <div id="view-list" class="section-view">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4"><h1 class="h3 mb-0 text-gray-800">Daftar Halaman Sales</h1><button class="btn btn-primary btn-sm" onclick="loadPagesList()"><i class="fas fa-sync-alt"></i> Refresh Data</button></div>
-                    <div class="card card-custom mb-4 position-relative"><div class="overlay-loader" id="loader-list"><div class="spinner-border text-danger" role="status"></div></div><div class="card-header card-header-custom"><i class="fas fa-table me-2"></i> File HTML Aktif</div><div class="card-body p-0"><div class="table-responsive"><table class="table table-hover table-bordered mb-0 align-middle"><thead class="table-light"><tr><th width="5%">No</th><th width="30%">Nama File (Slug)</th><th width="40%">URL Publik</th><th width="25%" class="text-center">Aksi</th></tr></thead><tbody id="tableDataBody"><tr><td colspan="4" class="text-center py-4 text-muted">Klik tombol Refresh Data untuk memuat.</td></tr></tbody></table></div></div></div>
-                </div>
+            <!-- List View -->
+            <div id="view-list" class="section-view">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4"><h1 class="h3 mb-0 text-gray-800">Daftar Halaman Sales</h1><button class="btn btn-primary btn-sm" onclick="loadPagesList()"><i class="fas fa-sync-alt"></i> Refresh Data</button></div>
+                <div class="card card-custom mb-4 position-relative"><div class="overlay-loader" id="loader-list"><div class="spinner-border text-danger" role="status"></div></div><div class="card-header card-header-custom"><i class="fas fa-table me-2"></i> File HTML Aktif</div><div class="card-body p-0"><div class="table-responsive"><table class="table table-hover table-bordered mb-0 align-middle"><thead class="table-light"><tr><th width="5%">No</th><th width="30%">Nama File (Slug)</th><th width="40%">URL Publik</th><th width="25%" class="text-center">Aksi</th></tr></thead><tbody id="tableDataBody"><tr><td colspan="4" class="text-center py-4 text-muted">Klik tombol Refresh Data untuk memuat.</div></div></div></div>
+            </div>
 
-                <!-- Form View -->
-                <div id="view-form" class="section-view">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4"><h1 class="h3 mb-0 text-gray-800" id="formTitle">Tambah Halaman Baru</h1></div>
-                    <div class="row"><div class="col-lg-8"><div class="card card-custom position-relative"><div class="overlay-loader" id="loader-form"><div class="spinner-border text-danger" role="status"></div></div><div class="card-body p-4"><form id="pageForm"><input type="hidden" id="fileSha" value=""><input type="hidden" id="originalSlug" value=""><h5 class="fw-bold mb-3 border-bottom pb-2"><i class="fas fa-info-circle text-primary me-2"></i>Info Utama</h5><div class="mb-3"><label class="form-label fw-bold">URL Halaman (Slug) <span class="text-danger">*</span></label><div class="input-group"><span class="input-group-text bg-light">webanda.com/</span><input type="text" id="pageSlug" required placeholder="contoh: budi-sales" pattern="[a-z0-9-]+" class="form-control"><span class="input-group-text bg-light">.html</span></div><small class="text-muted">Hanya huruf kecil, angka, dan strip.</small></div><div class="row mb-4"><div class="col-md-6"><label class="form-label fw-bold">Nama Sales <span class="text-danger">*</span></label><input type="text" id="salesName" required placeholder="contoh: Budi Setiawan" class="form-control"></div><div class="col-md-6 mt-3 mt-md-0"><label class="form-label fw-bold">Nomor WhatsApp <span class="text-danger">*</span></label><input type="number" id="waNumber" required placeholder="contoh: 628123456789" class="form-control"><small class="text-muted">Awali dengan 62.</small></div></div><div class="mb-4"><label class="form-label fw-bold">Foto Profil <span class="text-danger">*</span></label><input type="file" id="profilePicFile" accept="image/jpeg,image/png,image/webp" class="form-control"><small class="text-muted">Format JPG, PNG, WEBP. Maksimal 2 MB.</small><div class="mt-2"><img id="profilePreview" class="profile-preview" style="display: none;" alt="Preview"></div></div><h5 class="fw-bold mb-3 border-bottom pb-2 mt-4"><i class="fas fa-search text-success me-2"></i>Pengaturan SEO</h5><div class="mb-3"><label class="form-label fw-bold">Meta Title <span class="text-danger">*</span></label><input type="text" id="seoTitle" required placeholder="Budi - MPM Motor Madiun" class="form-control"></div><div class="mb-4"><label class="form-label fw-bold">Meta Description <span class="text-danger">*</span></label><textarea id="seoDesc" required rows="3" placeholder="Hubungi Budi untuk pembelian motor Honda..." class="form-control"></textarea></div><div class="text-end border-top pt-3 mt-4"><button type="button" class="btn btn-secondary me-2" onclick="switchView('list', document.querySelectorAll('.nav-item')[2])">Batal</button><button type="button" onclick="generateAndPushPage()" id="btnSubmit" class="btn btn-danger px-4"><i class="fas fa-cloud-upload-alt me-1"></i> Simpan & Publish</button></div></form></div></div></div><div class="col-lg-4 mt-4 mt-lg-0"><div class="alert alert-info border-0 shadow-sm"><h6 class="fw-bold"><i class="fas fa-lightbulb me-1"></i> Info Deployment</h6><p class="small mb-0">Setiap kali Anda menekan tombol Simpan, file HTML dan gambar profil akan dikirim ke repository GitHub.</p><hr><p class="small mb-0">Jika repository Anda tersambung ke Cloudflare Pages atau Vercel, perubahan biasanya akan tampil secara publik dalam 1-3 menit.</p></div></div></div>
+            <!-- Form View -->
+            <div id="view-form" class="section-view">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4"><h1 class="h3 mb-0 text-gray-800" id="formTitle">Tambah Halaman Baru</h1></div>
+                <div class="row"><div class="col-lg-8"><div class="card card-custom position-relative"><div class="overlay-loader" id="loader-form"><div class="spinner-border text-danger" role="status"></div></div><div class="card-body p-4"><form id="pageForm"><input type="hidden" id="fileSha" value=""><input type="hidden" id="originalSlug" value=""><h5 class="fw-bold mb-3 border-bottom pb-2"><i class="fas fa-info-circle text-primary me-2"></i>Info Utama</h5><div class="mb-3"><label class="form-label fw-bold">URL Halaman (Slug) <span class="text-danger">*</span></label><div class="input-group"><span class="input-group-text bg-light">webanda.com/</span><input type="text" id="pageSlug" required placeholder="contoh: budi-sales" pattern="[a-z0-9-]+" class="form-control"><span class="input-group-text bg-light">.html</span></div><small class="text-muted">Hanya huruf kecil, angka, dan strip.</small></div><div class="row mb-4"><div class="col-md-6"><label class="form-label fw-bold">Nama Sales <span class="text-danger">*</span></label><input type="text" id="salesName" required placeholder="contoh: Budi Setiawan" class="form-control"></div><div class="col-md-6 mt-3 mt-md-0"><label class="form-label fw-bold">Nomor WhatsApp <span class="text-danger">*</span></label><input type="number" id="waNumber" required placeholder="contoh: 628123456789" class="form-control"><small class="text-muted">Awali dengan 62.</small></div></div><div class="mb-4"><label class="form-label fw-bold">Foto Profil <span class="text-danger">*</span></label><input type="file" id="profilePicFile" accept="image/jpeg,image/png,image/webp" class="form-control"><small class="text-muted">Format JPG, PNG, WEBP. Maksimal 2 MB.</small><div class="mt-2"><img id="profilePreview" class="profile-preview" style="display: none;" alt="Preview"></div></div><h5 class="fw-bold mb-3 border-bottom pb-2 mt-4"><i class="fas fa-search text-success me-2"></i>Pengaturan SEO</h5><div class="mb-3"><label class="form-label fw-bold">Meta Title <span class="text-danger">*</span></label><input type="text" id="seoTitle" required placeholder="Budi - MPM Motor Madiun" class="form-control"></div><div class="mb-4"><label class="form-label fw-bold">Meta Description <span class="text-danger">*</span></label><textarea id="seoDesc" required rows="3" placeholder="Hubungi Budi untuk pembelian motor Honda..." class="form-control"></textarea></div><div class="text-end border-top pt-3 mt-4"><button type="button" class="btn btn-secondary me-2" onclick="switchView('list', document.querySelectorAll('.nav-item')[2])">Batal</button><button type="button" onclick="generateAndPushPage()" id="btnSubmit" class="btn btn-danger px-4"><i class="fas fa-cloud-upload-alt me-1"></i> Simpan & Publish</button></div></form></div></div></div><div class="col-lg-4 mt-4 mt-lg-0"><div class="alert alert-info border-0 shadow-sm"><h6 class="fw-bold"><i class="fas fa-lightbulb me-1"></i> Info Deployment</h6><p class="small mb-0">Setiap kali Anda menekan tombol Simpan, file HTML dan gambar profil akan dikirim ke repository GitHub.</p><hr><p class="small mb-0">Perubahan akan tampil publik dalam 1-3 menit.</p></div></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TEMPLATE HTML LENGKAP (SALINAN INDEX.HTML DENGAN PLACEHOLDER) ==================== -->
+<script type="text/plain" id="html-template"><!DOCTYPE html>
+<html data-bs-theme="light" lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>{{SEO_TITLE}}</title>
+<link rel="canonical" href="https://nana-mpmmadiun.my.id/">
+<meta property="og:url" content="https://nana-mpmmadiun.my.id/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="{{SEO_TITLE}}">
+<meta property="og:image" content="{{PROFILE_PIC_PATH}}">
+<meta name="twitter:description" content="{{SEO_DESC}}">
+<meta name="description" content="{{SEO_DESC}}">
+<meta property="og:description" content="{{SEO_DESC}}">
+<meta name="twitter:image" content="{{PROFILE_PIC_PATH}}">
+<meta name="twitter:title" content="{{SEO_TITLE}}">
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","name":"{{SEO_TITLE}}","url":"https://nana-mpmmadiun.my.id"}</script>
+<link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;subset=latin-ext&amp;display=swap">
+<link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+<link rel="stylesheet" href="assets/css/animate.min.css">
+<link rel="stylesheet" href="assets/css/index.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-77L1Q3KWFE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-77L1Q3KWFE');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body style="font-family: Poppins, sans-serif;">
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3 navbar-custom">
+    <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+            <img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/assets/images/logo/honda.svg" alt="Honda" width="170" height="28" style="height: auto;">
+        </a>
+        <button class="btn d-lg-none px-3 py-1 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="font-size: 16px;">Cek Kredit</button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav align-items-center ms-auto">
+                <li class="nav-item"><a class="nav-link fw-medium" data-bs-target="#simulasi-kredit" data-bs-toggle="modal" href="#">Cek Simulasi</a></li>
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn w-100 btn-custom-primary" role="button" href="https://wa.me/{{WA_NUMBER}}" target="_blank" style="font-size: 16px;"><i class="fab fa-whatsapp me-2"></i>Hubungi {{SALES_NAME}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="hero-bg"></div>
+<div class="container text-center d-flex flex-column justify-content-center align-items-center mb-5 profile-wrapper">
+    <div>
+        <div style="position: absolute;margin-top: 106px;margin-right: 0px;margin-left: 158px;">
+            <span class="badge" style="position: absolute;bottom: 0px;background: rgb(0,200,20);padding-top: 6.2px;padding-bottom: 6.2px;padding-right: 5.8px;padding-left: 5.8px;border-radius: 16px;">
+                <span class="spinner-grow spinner-grow-sm" role="status" style="width: 10px;height: 10px;margin-right: 3px;"></span>Online
+            </span>
+        </div>
+        <img id="profilePic" src="{{PROFILE_PIC_PATH}}" alt="{{SALES_NAME}}" class="profile-img">
+    </div>
+    <h3 class="fw-bold mt-3 mb-0">{{SALES_NAME}}</h3>
+    <p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;"><i class="fas fa-id-card-alt me-2"></i>Dealer MPM Motor Madiun</p>
+    <p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Melayani pembelian sepeda motor secara cash &amp; credit.</p>
+    <div class="d-flex justify-content-center flex-wrap gap-3 mt-4" style="max-width: 600px;width: 100%;padding: 16px;background: #ededed;border-radius: 30px;">
+        <p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Cek simulasi kredit sekarang</p>
+        <button class="btn shadow-sm px-4 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="width: 100%;"><i class="fas fa-calculator me-2"></i>Simulasi Kredit</button>
+        <p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Konsultasi via whatsapp</p>
+        <a class="btn shadow-sm px-4 btn-custom-primary" role="button" style="width: 100%;" href="https://api.whatsapp.com/send/?phone={{WA_NUMBER}}&amp;text={{WA_MSG_ENCODED}}"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
+        <p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Buat janji temu via whatsapp</p>
+        <a class="btn shadow-sm px-4 btn-custom-primary" role="button" style="width: 100%;" href="janji-temu.html"><i class="fas fa-th-list me-2"></i>Buat Janji Temu</a>
+    </div>
+</div>
+<div class="container mb-5">
+    <div class="d-flex flex-column justify-content-between gap-3 flex-md-row align-items-md-center mb-3">
+        <h3 class="fw-bold mb-0"><i class="text-danger me-2 bi bi-motorcycle"></i>Katalog Motor</h3>
+        <div class="input-group bg-white border rounded-pill shadow-sm overflow-hidden search-container" style="max-width:350px;">
+            <span class="text-muted bg-transparent border-0 ps-3 input-group-text"><svg class="bi bi-search" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path></svg></span>
+            <input class="bg-transparent border-0 form-control py-2" type="text" id="searchKatalog" placeholder="Cari motor impianmu..." onkeyup="filterKatalog()">
+        </div>
+    </div>
+    <div class="d-flex overflow-auto gap-2 mb-3 pb-3 hide-scrollbar" id="categoryTabs"></div>
+    <div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-4" id="katalogMotorContainer">
+        <div class="col-12" id="loadingKatalog" style="width: 100%;position: absolute;"><div class="card text-muted text-center shadow-sm h-100 p-3 motor-card"><p style="margin-bottom: 0px;"><span class="spinner-border spinner-border-sm" role="status" style="margin-right: 5px;"></span>Harap tunggu..</p></div></div>
+    </div>
+</div>
+<footer class="text-center text-white bg-dark py-4" style="margin-top: 86px;"><p class="text-white-50 mb-0" style="font-size: 15px;">© 2026 Triana MPM Motor Madiun</p></footer>
+
+<div class="modal fade" role="dialog" tabindex="-1" id="simulasi-kredit" style="font-size: 16px;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content border-0 shadow-lg" style="border-radius:20px;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold text-dark"><svg class="bi bi-calculator-fill text-danger me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"></path></svg>Simulasi Kredit</h5>
+                <button class="btn-close bg-light rounded-circle p-2" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body pt-3">
+                <div class="text-center bg-light rounded-4 my-4 py-4" id="loadingData"><span class="spinner-border spinner-border-sm" role="status"></span><p class="small text-muted mt-2 mb-0">Harap Tunggu</p></div>
+                <form id="kreditForm" style="display: none;">
+                    <div class="mb-3"><label class="form-label small fw-semibold text-muted">Kategori Motor</label><select class="bg-light form-select form-select-lg" disabled id="jenisMotor" required style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Memuat...</option></select></div>
+                    <div class="mb-3"><label class="form-label small fw-semibold text-muted">Tipe Motor</label><select class="bg-light form-select form-select-lg" disabled id="tipeMotor" required style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Pilih Kategori Dulu</option></select></div>
+                    <div class="mb-4"><label class="form-label small fw-semibold text-muted">Uang Muka</label><select class="bg-light form-select form-select-lg" disabled id="dp" required style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Pilih Tipe Motor Dulu</option></select></div>
+                    <button class="btn rounded-4 w-100 py-3 btn-custom-primary" type="button" onclick="calculateInstallment()">Hitung Angsuran</button>
+                </form>
+                <div id="result" style="display: none;margin-top: 24px;">
+                    <h6 class="fw-bold text-center mb-3" id="resMotor" style="font-size: 25px;">Motor</h6>
+                    <div class="text-center mb-3"><img class="img-fluid rounded-3" id="resGambar" alt="Motor" src="" style="max-height: 300px;object-fit: contain;"></div>
+                    <div class="result-box" style="margin-bottom: 16px;">
+                        <div class="result-row"><span class="text-muted">Uang Muka</span><strong class="text-danger" id="resDP"></strong></div>
+                        <hr class="my-2 border-secondary border-opacity-25">
+                        <div class="result-row"><span class="text-muted">Tenor 12x</span><strong id="res12"></strong></div>
+                        <div class="result-row"><span class="text-muted">Tenor 18x</span><strong id="res18"></strong></div>
+                        <div class="result-row"><span class="text-muted">Tenor 24x</span><strong id="res24"></strong></div>
+                        <div class="result-row"><span class="text-muted">Tenor 30x</span><strong id="res30"></strong></div>
+                        <div class="result-row"><span class="text-muted">Tenor 36x</span><strong id="res36"></strong></div>
+                    </div>
+                    <div class="text-center mt-4"><p class="small text-muted mb-2">Silahkan screenshoot atau klik tombol Ajukan sekarang!</p><p class="small mb-2" style="color: rgba(193,0,0,0.75);">Harga dapat berubah rubah*</p></div>
+                    <img class="img-fluid" width="2433" height="1400" src="assets/img/galeri/OG-Nana.webp" style="border-radius: 16px;width: 100%;">
+                    <div class="text-center mt-4">
+                        <p class="small text-muted mb-2">Alamat Dealer Jl. Panglima Sudirman no.91 Taman, Kota Madiun</p>
+                        <p class="small mb-2" style="color: rgba(193,0,0,0.75);">Untuk menanyakan produk yang di pilih, klik ajukan sekarang</p>
+                        <button class="btn btn-success fw-bold rounded-4 shadow-sm w-100 py-3 pulse animated infinite" onclick="sendWhatsApp()"><svg class="bi bi-whatsapp me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path></svg>TANYAKAN PRODUK</button>
+                        <button class="btn btn-light rounded-4 w-100 mt-2 py-2 text-secondary" onclick="resetForm()">Hitung Ulang</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Template HTML -->
-    <script type="text/plain" id="html-template"><!DOCTYPE html>
-<html data-bs-theme="light" lang="id">
-<head>
-<!-- CMS_META: {{META_JSON}} -->
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>{{SEO_TITLE}}</title><link rel="canonical" href="https://nana-mpmmadiun.my.id/"><meta property="og:url" content="https://nana-mpmmadiun.my.id/"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="{{SEO_TITLE}}"><meta property="og:image" content="{{PROFILE_PIC_PATH}}"><meta name="twitter:description" content="{{SEO_DESC}}"><meta name="description" content="{{SEO_DESC}}"><meta property="og:description" content="{{SEO_DESC}}"><meta name="twitter:image" content="{{PROFILE_PIC_PATH}}"><meta name="twitter:title" content="{{SEO_TITLE}}">
-<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","name":"{{SEO_TITLE}}","url":"https://nana-mpmmadiun.my.id"}</script><link rel="icon" type="image/webp" sizes="1424x1424" href="assets/img/galeri/photonana.webp"><link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;subset=latin-ext&amp;display=swap"><link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css"><link rel="stylesheet" href="assets/css/animate.min.css"><link rel="stylesheet" href="assets/css/index.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-77L1Q3KWFE"></script>
-<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-77L1Q3KWFE');</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head><body style="font-family: Poppins, sans-serif;"><nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3 navbar-custom"><div class="container"><a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#"><img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/assets/images/logo/honda.svg" alt="Honda" width="170" height="28"></a><button class="btn d-lg-none px-3 py-1 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit">Cek Kredit</button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav align-items-center ms-auto"><li class="nav-item"><a class="nav-link fw-medium" data-bs-target="#simulasi-kredit" data-bs-toggle="modal" href="#">Cek Simulasi</a></li><li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn w-100 btn-custom-primary" role="button" href="https://wa.me/{{WA_NUMBER}}" target="_blank"><i class="fab fa-whatsapp me-2"></i>Hubungi {{SALES_NAME}}</a></li></ul></div></div></nav><div class="hero-bg"></div><div class="container text-center d-flex flex-column justify-content-center align-items-center mb-5 profile-wrapper"><div><div style="position: absolute;margin-top: 106px;margin-right: 0px;margin-left: 158px;"><span class="badge" style="background: rgb(0,200,20);padding: 6px;border-radius: 16px;"><span class="spinner-grow spinner-grow-sm" style="width:10px;height:10px;"></span>Online</span></div><img id="profilePic" src="{{PROFILE_PIC_PATH}}" alt="{{SALES_NAME}}" class="profile-img"></div><h3 class="fw-bold mt-3 mb-0">{{SALES_NAME}}</h3><p class="fw-medium text-muted"><i class="fas fa-id-card-alt me-2"></i>Dealer MPM Motor Madiun</p><p class="fw-medium text-muted">Melayani pembelian sepeda motor secara cash &amp; credit.</p><div class="d-flex justify-content-center flex-wrap gap-3 mt-4" style="max-width:600px;width:100%;padding:16px;background:#ededed;border-radius:30px;"><p class="fw-medium text-muted">Cek simulasi kredit sekarang</p><button class="btn shadow-sm px-4 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="width:100%;"><i class="fas fa-calculator me-2"></i>Simulasi Kredit</button><p class="fw-medium text-muted">Konsultasi via whatsapp</p><a class="btn shadow-sm px-4 btn-custom-primary" role="button" style="width:100%;" href="https://api.whatsapp.com/send/?phone={{WA_NUMBER}}&amp;text={{WA_MSG_ENCODED}}"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a><p class="fw-medium text-muted">Buat janji temu via whatsapp</p><a class="btn shadow-sm px-4 btn-custom-primary" role="button" style="width:100%;" href="janji-temu.html"><i class="fas fa-th-list me-2"></i>Buat Janji Temu</a></div></div><div class="container mb-5"><div class="d-flex flex-column justify-content-between gap-3 flex-md-row align-items-md-center mb-3"><h3 class="fw-bold mb-0"><i class="text-danger me-2 bi bi-motorcycle"></i>Katalog Motor</h3><div class="input-group bg-white border rounded-pill shadow-sm overflow-hidden search-container" style="max-width:350px;"><span class="text-muted bg-transparent border-0 ps-3 input-group-text"><svg class="bi bi-search" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path></svg></span><input class="bg-transparent border-0 form-control py-2" type="text" id="searchKatalog" placeholder="Cari motor impianmu..." onkeyup="filterKatalog()"></div></div><div class="d-flex overflow-auto gap-2 mb-3 pb-3 hide-scrollbar" id="categoryTabs"></div><div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-4" id="katalogMotorContainer"><div class="col-12" id="loadingKatalog" style="width:100%;position:absolute;"><div class="card text-muted text-center shadow-sm h-100 p-3"><p><span class="spinner-border spinner-border-sm"></span> Harap tunggu..</p></div></div></div></div><footer class="text-center text-white bg-dark py-4"><p class="text-white-50 mb-0">© 2026 Triana MPM Motor Madiun</p></footer><div class="modal fade" tabindex="-1" id="simulasi-kredit"><div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"><div class="modal-content border-0 shadow-lg" style="border-radius:20px;"><div class="modal-header border-0 pb-0"><h5 class="modal-title fw-bold text-dark"><svg class="bi bi-calculator-fill text-danger me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"></path></svg>Simulasi Kredit</h5><button class="btn-close bg-light rounded-circle p-2" data-bs-dismiss="modal"></button></div><div class="modal-body pt-3"><div class="text-center bg-light rounded-4 my-4 py-4" id="loadingData"><span class="spinner-border spinner-border-sm"></span><p class="small text-muted mt-2 mb-0">Harap Tunggu</p></div><form id="kreditForm" style="display: none;"><div class="mb-3"><label class="form-label small fw-semibold text-muted">Kategori Motor</label><select class="bg-light form-select form-select-lg" disabled id="jenisMotor" required style="border:1px solid rgb(228,3,17);border-radius:16px;"><option>Memuat...</option></select></div><div class="mb-3"><label class="form-label small fw-semibold text-muted">Tipe Motor</label><select class="bg-light form-select form-select-lg" disabled id="tipeMotor" required style="border:1px solid rgb(228,3,17);border-radius:16px;"><option>Pilih Kategori Dulu</option></select></div><div class="mb-4"><label class="form-label small fw-semibold text-muted">Uang Muka</label><select class="bg-light form-select form-select-lg" disabled id="dp" required style="border:1px solid rgb(228,3,17);border-radius:16px;"><option>Pilih Tipe Motor Dulu</option></select></div><button class="btn rounded-4 w-100 py-3 btn-custom-primary" type="button" onclick="calculateInstallment()">Hitung Angsuran</button></form><div id="result" style="display: none;margin-top:24px;"><h6 class="fw-bold text-center mb-3" id="resMotor" style="font-size:25px;">Motor</h6><div class="text-center mb-3"><img class="img-fluid rounded-3" id="resGambar" style="max-height:300px;object-fit:contain;"></div><div class="result-box mb-3"><div class="result-row"><span class="text-muted">Uang Muka</span><strong class="text-danger" id="resDP"></strong></div><hr><div class="result-row"><span class="text-muted">Tenor 12x</span><strong id="res12"></strong></div><div class="result-row"><span class="text-muted">Tenor 18x</span><strong id="res18"></strong></div><div class="result-row"><span class="text-muted">Tenor 24x</span><strong id="res24"></strong></div><div class="result-row"><span class="text-muted">Tenor 30x</span><strong id="res30"></strong></div><div class="result-row"><span class="text-muted">Tenor 36x</span><strong id="res36"></strong></div></div><div class="text-center mt-4"><p class="small text-muted mb-2">Silahkan screenshoot atau klik tombol Ajukan sekarang!</p><p class="small mb-2 text-danger">Harga dapat berubah rubah*</p></div><img class="img-fluid" width="2433" height="1400" src="assets/img/galeri/OG-Nana.webp" style="border-radius:16px;width:100%;"><div class="text-center mt-4"><p class="small text-muted mb-2">Alamat Dealer Jl. Panglima Sudirman no.91 Taman, Kota Madiun</p><p class="small mb-2 text-danger">Untuk menanyakan produk yang di pilih, klik ajukan sekarang</p><button class="btn btn-success fw-bold rounded-4 shadow-sm w-100 py-3 pulse animated infinite" onclick="sendWhatsApp()"><svg class="bi bi-whatsapp me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path></svg>TANYAKAN PRODUK</button><button class="btn btn-light rounded-4 w-100 mt-2 py-2 text-secondary" onclick="resetForm()">Hitung Ulang</button></div></div></div></div></div></div><script>
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyE3IoDDgE0cG_aWDvq5K02aDoHC9gv4hFFlCehnp3N_7GwmhZiq10qErL0XApV8mEtbQ/exec'; 
-let globalData = []; let activeCategory = 'Semua';
-const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
-window.onload = async () => { try { const response = await fetch(APPS_SCRIPT_URL, { redirect: "follow" }); if (!response.ok) throw new Error(); globalData = await response.json(); document.getElementById('loadingData').style.display = 'none'; document.getElementById('kreditForm').style.display = 'block'; document.getElementById('loadingKatalog').style.display = 'none'; setupDropdowns(); renderCategoryTabs(); filterKatalog(); } catch(e) { document.getElementById('loadingData').innerHTML = '<p class="text-danger">Gagal terhubung ke server.</p>'; } };
-function setupDropdowns() { /* ... */ }
-function calculateInstallment() { /* ... */ }
-function resetForm() { /* ... */ }
-function sendWhatsApp() { /* ... */ }
-function renderCategoryTabs() { /* ... */ }
-function setCategory(cat) { /* ... */ }
-function filterKatalog() { /* ... */ }
-function renderCatalog(dataArray) { /* ... */ }
-function openSimulasi(jenis, tipe) { /* ... */ }
-</script><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script><script src="assets/js/bs-init.js"></script></body></html></script>
+<script>
+    // --- URL GOOGLE APPS SCRIPT (SAMA DENGAN INDEX.HTML) ---
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyE3IoDDgE0cG_aWDvq5K02aDoHC9gv4hFFlCehnp3N_7GwmhZiq10qErL0XApV8mEtbQ/exec'; 
+    let globalData = [];
+    let activeCategory = 'Semua';
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // ==================== UI & Navigation ====================
-        document.getElementById('sidebarCollapse').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('collapsed');
+    const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+
+    window.onload = async () => {
+        try {
+            const response = await fetch(APPS_SCRIPT_URL, { redirect: "follow" });
+            if (!response.ok) throw new Error("Network response was not ok");
+            globalData = await response.json();
+            document.getElementById('loadingData').style.display = 'none';
+            document.getElementById('kreditForm').style.display = 'block';
+            document.getElementById('loadingKatalog').style.display = 'none';
+            setupDropdowns();
+            renderCategoryTabs();
+            filterKatalog();
+        } catch (error) {
+            document.getElementById('loadingData').innerHTML = '<p class="text-danger">Gagal terhubung ke server. Silakan muat ulang halaman.</p>';
+            document.getElementById('loadingKatalog').innerHTML = '<p class="text-danger mt-3">Gagal memuat katalog.</p>';
+            Swal.fire({ icon: 'error', title: 'Gagal Memuat Data', text: 'Terjadi masalah saat mengambil data dari server. Silakan coba muat ulang halaman.', confirmButtonColor: '#d33', confirmButtonText: 'Muat Ulang', preConfirm: () => { location.reload(); } });
+        }
+    };
+
+    function setupDropdowns() {
+        const jenisSelect = document.getElementById('jenisMotor');
+        const tipeSelect = document.getElementById('tipeMotor');
+        const dpSelect = document.getElementById('dp');
+        const uniqueJenis = [...new Set(globalData.map(item => item['Jenis Motor']).filter(Boolean))];
+        jenisSelect.innerHTML = '<option value="" disabled selected>-- Pilih Kategori --</option>';
+        uniqueJenis.forEach(jenis => { jenisSelect.innerHTML += `<option value="${jenis}">${jenis}</option>`; });
+        jenisSelect.disabled = false;
+        jenisSelect.addEventListener('change', (e) => {
+            const val = e.target.value;
+            tipeSelect.innerHTML = '<option value="" disabled selected>-- Pilih Tipe Motor --</option>';
+            dpSelect.innerHTML = '<option value="" disabled selected>-- Pilih Tipe Dulu --</option>';
+            dpSelect.disabled = true;
+            if (val) {
+                const uniqueTipe = [...new Set(globalData.filter(i => i['Jenis Motor'] === val).map(i => i['Tipe Motor']))];
+                uniqueTipe.forEach(tipe => { tipeSelect.innerHTML += `<option value="${tipe}">${tipe}</option>`; });
+                tipeSelect.disabled = false;
+            }
         });
-
-        function switchView(viewId, element = null) {
-            document.querySelectorAll('.section-view').forEach(el => el.classList.remove('active'));
-            document.getElementById('view-' + viewId).classList.add('active');
-            if(element) {
-                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-                element.closest('.nav-item').classList.add('active');
+        tipeSelect.addEventListener('change', (e) => {
+            const jenis = jenisSelect.value;
+            const tipe = e.target.value;
+            dpSelect.innerHTML = '<option value="" disabled selected>-- Pilih Nominal DP --</option>';
+            if (tipe) {
+                const filteredDP = globalData.filter(i => i['Jenis Motor'] === jenis && i['Tipe Motor'] === tipe).sort((a, b) => Number(a['Uang Muka']) - Number(b['Uang Muka']));
+                filteredDP.forEach(item => { dpSelect.innerHTML += `<option value="${item['Uang Muka']}">${formatRp(item['Uang Muka'])}</option>`; });
+                dpSelect.disabled = false;
             }
-            if(viewId === 'list') loadPagesList();
+        });
+    }
+
+    function calculateInstallment() {
+        const jenis = document.getElementById('jenisMotor').value;
+        const tipe = document.getElementById('tipeMotor').value;
+        const dp = document.getElementById('dp').value;
+        if(!jenis || !tipe || !dp) { 
+            Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Mohon lengkapi pilihan Jenis, Tipe, dan Uang Muka.', confirmButtonColor: '#d33' });
+            return; 
         }
-
-        // ==================== Konfigurasi GitHub ====================
-        function checkConfigStatus() {
-            const token = localStorage.getItem('ghToken');
-            const owner = localStorage.getItem('ghOwner');
-            const repo = localStorage.getItem('ghRepo');
-            const statusEl = document.getElementById('status-config');
-            if(token && owner && repo) {
-                statusEl.innerHTML = '<span class="text-success"><i class="fas fa-check-circle"></i> Terhubung</span>';
-                document.getElementById('ghToken').value = token;
-                document.getElementById('ghOwner').value = owner;
-                document.getElementById('ghRepo').value = repo;
-                return { token, owner, repo };
-            } else {
-                statusEl.innerHTML = '<span class="text-danger"><i class="fas fa-times-circle"></i> Belum Diatur</span>';
-                return null;
-            }
+        const result = globalData.find(i => i['Jenis Motor'] === jenis && i['Tipe Motor'] === tipe && i['Uang Muka'].toString() === dp);
+        if(result) {
+            const imgUrl = result['URL Gambar'] ? result['URL Gambar'] : 'https://via.placeholder.com/400x300?text=Gambar+Belum+Tersedia';
+            document.getElementById('resGambar').src = imgUrl;
+            document.getElementById('resMotor').innerText = `${result['Tipe Motor']}`;
+            document.getElementById('resDP').innerText = formatRp(result['Uang Muka']);
+            document.getElementById('res12').innerText = formatRp(result['12 Bulan']) + ' /bln';
+            document.getElementById('res18').innerText = formatRp(result['18 Bulan']) + ' /bln';
+            document.getElementById('res24').innerText = formatRp(result['24 Bulan']) + ' /bln';
+            document.getElementById('res30').innerText = formatRp(result['30 Bulan']) + ' /bln';
+            document.getElementById('res36').innerText = formatRp(result['36 Bulan']) + ' /bln';
+            document.getElementById('kreditForm').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+        } else {
+            Swal.fire({ icon: 'error', title: 'Data Tidak Ditemukan', text: 'Maaf, data simulasi untuk kombinasi ini tidak tersedia.', confirmButtonColor: '#d33' });
         }
-        document.addEventListener('DOMContentLoaded', checkConfigStatus);
+    }
 
-        function saveConfig() {
-            const token = document.getElementById('ghToken').value.trim();
-            const owner = document.getElementById('ghOwner').value.trim();
-            const repo = document.getElementById('ghRepo').value.trim();
-            if(!token || !owner || !repo) return Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Semua kolom konfigurasi wajib diisi.' });
-            localStorage.setItem('ghToken', token);
-            localStorage.setItem('ghOwner', owner);
-            localStorage.setItem('ghRepo', repo);
-            checkConfigStatus();
-            Swal.fire({ icon: 'success', title: 'Tersimpan!', text: 'Konfigurasi GitHub berhasil disimpan.', timer: 2000, showConfirmButton: false });
+    function resetForm() {
+        document.getElementById('result').style.display = 'none';
+        document.getElementById('kreditForm').style.display = 'block';
+    }
+
+    function sendWhatsApp() {
+        const motor = document.getElementById('resMotor').innerText;
+        const dp = document.getElementById('resDP').innerText;
+        const message = `Halo Kak {{SALES_NAME}},\nSaya tertarik mengajukan kredit untuk motor *${motor}*.\nRencana Uang Muka (DP): *${dp}*.\n\nMohon informasi persyaratannya. Terima kasih!`;
+        Swal.fire({
+            title: 'Hubungi Sales?', text: "Anda akan diarahkan ke WhatsApp untuk mengirim pesan ini.", icon: 'question', showCancelButton: true, confirmButtonColor: '#25D366', cancelButtonColor: '#d33', confirmButtonText: 'Ya, Kirim WA', cancelButtonText: 'Batal'
+        }).then((result) => { if (result.isConfirmed) { window.open(`https://wa.me/{{WA_NUMBER}}?text=${encodeURIComponent(message)}`, '_blank'); } });
+    }
+
+    function renderCategoryTabs() {
+        const tabsContainer = document.getElementById('categoryTabs');
+        const uniqueCategories = [...new Set(globalData.map(item => item['Jenis Motor']).filter(val => val !== undefined && val !== ""))];
+        const categories = ['Semua', ...uniqueCategories];
+        if(tabsContainer) tabsContainer.innerHTML = categories.map(cat => `<button class="btn tab-btn ${cat === activeCategory ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>`).join('');
+    }
+
+    function setCategory(cat) { activeCategory = cat; renderCategoryTabs(); filterKatalog(); }
+
+    function filterKatalog() {
+        const searchInput = document.getElementById('searchKatalog');
+        const keyword = searchInput ? searchInput.value.toLowerCase() : '';
+        const filteredData = globalData.filter(item => {
+            const tipe = (item['Tipe Motor'] || '').toLowerCase();
+            const jenis = (item['Jenis Motor'] || '');
+            const matchSearch = tipe.includes(keyword) || jenis.toLowerCase().includes(keyword);
+            const matchCategory = activeCategory === 'Semua' || jenis === activeCategory;
+            return matchSearch && matchCategory;
+        });
+        renderCatalog(filteredData);
+    }
+
+    function renderCatalog(dataArray) {
+        const container = document.getElementById('katalogMotorContainer');
+        if(!container) return;
+        container.innerHTML = '';
+        const uniqueTipe = [];
+        const catalogItems = dataArray.filter(item => { if(!uniqueTipe.includes(item['Tipe Motor'])) { uniqueTipe.push(item['Tipe Motor']); return true; } return false; });
+        if(catalogItems.length === 0) {
+            container.innerHTML = `<div class="col-12 text-center text-muted py-5"><i class="bi bi-search fs-1 text-secondary opacity-50 mb-3 d-block"></i><p>Kendaraan tidak ditemukan di kategori ini.</p></div>`;
+            return;
         }
+        catalogItems.forEach(item => {
+            let imgUrl = item['URL Gambar'] ? item['URL Gambar'] : 'https://via.placeholder.com/400x300?text=No+Image';
+            let card = `<div class="col"><div class="card motor-card shadow-sm h-100 border-0"><div class="motor-img-wrapper"><img src="${imgUrl}" class="img-fluid" style="height: 180px; object-fit: contain;" alt="${item['Tipe Motor']}"></div><div class="card-body bg-white text-center position-relative"><span class="badge bg-danger position-absolute top-0 start-50 translate-middle rounded-pill px-3 py-2 shadow-sm">${item['Jenis Motor']}</span><h5 class="card-title judul fw-bold mt-2 mb-1">${item['Tipe Motor']}</h5><p class="text-muted small fw-medium mb-3">Cash: ${formatRp(item['Harga OTR'])}</p><button class="btn btn-outline-danger w-100 rounded-pill fw-bold" onclick="openSimulasi('${item['Jenis Motor']}', '${item['Tipe Motor']}')">Cek Cicilan</button></div></div></div>`;
+            container.innerHTML += card;
+        });
+    }
 
-        function getGitHubApiUrl(path = '') {
-            const conf = checkConfigStatus();
-            if(!conf) return null;
-            return `https://api.github.com/repos/${conf.owner}/${conf.repo}/contents/${path}`;
+    function openSimulasi(jenis, tipe) {
+        const modalElement = document.getElementById('simulasi-kredit');
+        if (modalElement) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+            resetForm();
+            setTimeout(() => {
+                const jenisInput = document.getElementById('jenisMotor');
+                if(jenisInput) { jenisInput.value = jenis; jenisInput.dispatchEvent(new Event('change')); setTimeout(() => { const tipeInput = document.getElementById('tipeMotor'); if(tipeInput) { tipeInput.value = tipe; tipeInput.dispatchEvent(new Event('change')); } }, 100); }
+            }, 300);
+        } else { Swal.fire('Error', 'Modal element tidak ditemukan', 'error'); }
+    }
+</script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/bs-init.js"></script>
+</body>
+</html></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // ==================== UI & Navigation ====================
+    document.getElementById('sidebarCollapse').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+
+    function switchView(viewId, element = null) {
+        document.querySelectorAll('.section-view').forEach(el => el.classList.remove('active'));
+        document.getElementById('view-' + viewId).classList.add('active');
+        if(element) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.closest('.nav-item').classList.add('active');
         }
+        if(viewId === 'list') loadPagesList();
+    }
 
-        // ==================== Upload Gambar ke GitHub (dengan error handling) ====================
-        async function uploadImageToGithub(file, fileName) {
-            const conf = checkConfigStatus();
-            if (!conf) throw new Error("Konfigurasi GitHub belum diatur");
-
-            // Validasi ukuran file (maks 2MB)
-            if (file.size > 2 * 1024 * 1024) {
-                throw new Error("Ukuran gambar terlalu besar. Maksimal 2MB.");
-            }
-
-            // Validasi tipe file
-            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-            if (!allowedTypes.includes(file.type)) {
-                throw new Error("Format gambar harus JPG, PNG, atau WEBP.");
-            }
-
-            // Konversi ke base64
-            const reader = new FileReader();
-            const base64Promise = new Promise((resolve, reject) => {
-                reader.onload = () => resolve(reader.result.split(',')[1]);
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-            const base64Content = await base64Promise;
-
-            const imagePath = `assets/img/galeri/${fileName}`;
-            const apiUrl = getGitHubApiUrl(imagePath);
-            
-            const payload = {
-                message: `Upload gambar profil: ${fileName}`,
-                content: base64Content
-            };
-
-            // Cek apakah file sudah ada (untuk mendapatkan SHA jika perlu overwrite)
-            let sha = null;
-            try {
-                const checkRes = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${conf.token}` } });
-                if (checkRes.ok) {
-                    const existing = await checkRes.json();
-                    sha = existing.sha;
-                    payload.sha = sha;
-                } else if (checkRes.status !== 404) {
-                    const errText = await checkRes.text();
-                    throw new Error(`Gagal cek file: ${checkRes.status} - ${errText}`);
-                }
-            } catch (err) {
-                if (!err.message.includes('404')) throw err;
-            }
-
-            const response = await fetch(apiUrl, {
-                method: 'PUT',
-                headers: { 'Authorization': `Bearer ${conf.token}`, 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (!response.ok) {
-                const errorData = await response.text();
-                throw new Error(`Upload gambar gagal (${response.status}): ${errorData}`);
-            }
-            return imagePath;
+    // ==================== Konfigurasi GitHub ====================
+    function checkConfigStatus() {
+        const token = localStorage.getItem('ghToken');
+        const owner = localStorage.getItem('ghOwner');
+        const repo = localStorage.getItem('ghRepo');
+        const statusEl = document.getElementById('status-config');
+        if(token && owner && repo) {
+            statusEl.innerHTML = '<span class="text-success"><i class="fas fa-check-circle"></i> Terhubung</span>';
+            document.getElementById('ghToken').value = token;
+            document.getElementById('ghOwner').value = owner;
+            document.getElementById('ghRepo').value = repo;
+            return { token, owner, repo };
+        } else {
+            statusEl.innerHTML = '<span class="text-danger"><i class="fas fa-times-circle"></i> Belum Diatur</span>';
+            return null;
         }
+    }
+    document.addEventListener('DOMContentLoaded', checkConfigStatus);
 
-        // ==================== Daftar Halaman ====================
-        async function loadPagesList() {
-            const apiUrl = getGitHubApiUrl();
-            const conf = checkConfigStatus();
-            if(!apiUrl) {
-                document.getElementById('tableDataBody').innerHTML = '<tr><td colspan="4" class="text-center text-danger">Atur konfigurasi GitHub terlebih dahulu.</td></tr>';
-                return;
-            }
-            const loader = document.getElementById('loader-list');
-            const tbody = document.getElementById('tableDataBody');
-            loader.style.display = 'flex';
-            try {
-                const response = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${conf.token}` } });
-                if (!response.ok) throw new Error("Gagal mengambil data dari GitHub");
-                const files = await response.json();
-                let html = ''; let counter = 1;
-                const htmlFiles = files.filter(f => f.name.endsWith('.html') && f.name !== 'admin.html');
-                if(htmlFiles.length === 0) html = '<tr><td colspan="4" class="text-center text-muted">Belum ada halaman sales.</td></tr>';
-                else {
-                    htmlFiles.forEach(file => {
-                        html += `<tr><td>${counter++}</td><td><span class="badge bg-secondary">${file.name}</span></td><td><a href="/${file.name}" target="_blank" class="text-primary"><i class="fas fa-link fa-sm"></i> ${file.name}</a></td><td class="text-center"><button class="btn btn-sm btn-info text-white me-1" onclick="editPage('${file.name}', '${file.sha}')"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-danger" onclick="deletePage('${file.name}', '${file.sha}')"><i class="fas fa-trash-alt"></i></button></td></tr>`;
-                    });
-                }
-                tbody.innerHTML = html;
-            } catch (error) {
-                tbody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">${error.message}</td></tr>`;
-            } finally {
-                loader.style.display = 'none';
-            }
-        }
+    function saveConfig() {
+        const token = document.getElementById('ghToken').value.trim();
+        const owner = document.getElementById('ghOwner').value.trim();
+        const repo = document.getElementById('ghRepo').value.trim();
+        if(!token || !owner || !repo) return Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Semua kolom konfigurasi wajib diisi.' });
+        localStorage.setItem('ghToken', token);
+        localStorage.setItem('ghOwner', owner);
+        localStorage.setItem('ghRepo', repo);
+        checkConfigStatus();
+        Swal.fire({ icon: 'success', title: 'Tersimpan!', text: 'Konfigurasi GitHub berhasil disimpan.', timer: 2000, showConfirmButton: false });
+    }
 
-        // ==================== Reset Form ====================
-        function resetForm() {
-            document.getElementById('pageForm').reset();
-            document.getElementById('fileSha').value = '';
-            document.getElementById('originalSlug').value = '';
-            document.getElementById('pageSlug').readOnly = false;
-            document.getElementById('formTitle').innerText = 'Tambah Halaman Baru';
-            document.getElementById('profilePreview').style.display = 'none';
-            document.getElementById('profilePreview').src = '';
-            document.getElementById('profilePicFile').value = '';
-        }
+    function getGitHubApiUrl(path = '') {
+        const conf = checkConfigStatus();
+        if(!conf) return null;
+        return `https://api.github.com/repos/${conf.owner}/${conf.repo}/contents/${path}`;
+    }
 
-        // ==================== Edit Page ====================
-        async function editPage(fileName, sha) {
-            const apiUrl = getGitHubApiUrl(fileName);
-            const conf = checkConfigStatus();
-            Swal.fire({ title: 'Memuat Data...', allowOutsideClick: false, didOpen: () => { Swal.showLoading() } });
-            try {
-                const response = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${conf.token}` } });
-                if (!response.ok) throw new Error("Gagal mengambil isi file");
-                const fileData = await response.json();
-                const binaryStr = atob(fileData.content);
-                const bytes = new Uint8Array(binaryStr.length);
-                for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
-                const decodedContent = new TextDecoder('utf-8').decode(bytes);
-                const metaRegex = /<!-- CMS_META: (.*?) -->/;
-                const match = decodedContent.match(metaRegex);
-                if(match && match[1]) {
-                    const metaData = JSON.parse(match[1]);
-                    document.getElementById('pageSlug').value = metaData.slug;
-                    document.getElementById('salesName').value = metaData.salesName;
-                    document.getElementById('waNumber').value = metaData.waNumber;
-                    document.getElementById('seoTitle').value = metaData.seoTitle;
-                    document.getElementById('seoDesc').value = metaData.seoDesc;
-                    if (metaData.profilePicPath) {
-                        const preview = document.getElementById('profilePreview');
-                        preview.src = `/${metaData.profilePicPath}`;
-                        preview.style.display = 'block';
-                    }
-                    document.getElementById('fileSha').value = sha;
-                    document.getElementById('originalSlug').value = metaData.slug;
-                    document.getElementById('formTitle').innerText = `Edit Halaman: ${fileName}`;
-                    Swal.close();
-                    switchView('form', document.querySelectorAll('.nav-item')[1]);
-                } else throw new Error("Metadata tidak ditemukan di file ini.");
-            } catch (error) {
-                Swal.fire('Error', error.message, 'error');
-            }
-        }
+    // ==================== Upload Gambar ke GitHub ====================
+    async function uploadImageToGithub(file, fileName) {
+        const conf = checkConfigStatus();
+        if (!conf) throw new Error("Konfigurasi GitHub belum diatur");
+        if (file.size > 2 * 1024 * 1024) throw new Error("Ukuran gambar terlalu besar. Maksimal 2MB.");
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        if (!allowedTypes.includes(file.type)) throw new Error("Format gambar harus JPG, PNG, atau WEBP.");
+        const reader = new FileReader();
+        const base64Promise = new Promise((resolve, reject) => { reader.onload = () => resolve(reader.result.split(',')[1]); reader.onerror = reject; reader.readAsDataURL(file); });
+        const base64Content = await base64Promise;
+        const imagePath = `assets/img/galeri/${fileName}`;
+        const apiUrl = getGitHubApiUrl(imagePath);
+        const payload = { message: `Upload gambar profil: ${fileName}`, content: base64Content };
+        let sha = null;
+        try {
+            const checkRes = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${conf.token}` } });
+            if (checkRes.ok) { const existing = await checkRes.json(); sha = existing.sha; payload.sha = sha; }
+        } catch (err) { if (!err.message.includes('404')) throw err; }
+        const response = await fetch(apiUrl, { method: 'PUT', headers: { 'Authorization': `Bearer ${conf.token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        if (!response.ok) throw new Error(`Upload gambar gagal (${response.status}): ${await response.text()}`);
+        return imagePath;
+    }
 
-        // ==================== Delete Page ====================
-        async function deletePage(fileName, sha) {
-            const conf = checkConfigStatus();
-            const apiUrl = getGitHubApiUrl(fileName);
-            Swal.fire({
-                title: 'Yakin hapus?', text: `File ${fileName} akan dihapus permanen!`, icon: 'warning', showCancelButton: true,
-                confirmButtonColor: '#d33', cancelButtonColor: '#6c757d', confirmButtonText: 'Ya, Hapus!'
-            }).then(async (result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({ title: 'Menghapus...', allowOutsideClick: false, didOpen: () => { Swal.showLoading() } });
-                    try {
-                        const payload = { message: `CMS: Hapus ${fileName}`, sha: sha };
-                        const response = await fetch(apiUrl, { method: 'DELETE', headers: { 'Authorization': `Bearer ${conf.token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                        if (!response.ok) throw new Error("Gagal hapus file");
-                        Swal.fire('Terhapus!', 'Halaman berhasil dihapus.', 'success');
-                        loadPagesList();
-                    } catch (error) {
-                        Swal.fire('Error', error.message, 'error');
-                    }
-                }
-            });
-        }
-
-        // ==================== Generate & Publish ====================
-        async function generateAndPushPage() {
-            const conf = checkConfigStatus();
-            if(!conf) { Swal.fire('Error', 'Silakan atur Konfigurasi GitHub terlebih dahulu.', 'error'); return; }
-
-            const slug = document.getElementById('pageSlug').value.trim().toLowerCase();
-            const salesName = document.getElementById('salesName').value.trim();
-            const waNumber = document.getElementById('waNumber').value.trim();
-            const seoTitle = document.getElementById('seoTitle').value.trim();
-            const seoDesc = document.getElementById('seoDesc').value.trim();
-            const currentSha = document.getElementById('fileSha').value;
-            const originalSlug = document.getElementById('originalSlug').value;
-            const profilePicFile = document.getElementById('profilePicFile').files[0];
-
-            if(!slug || !salesName || !waNumber || !seoTitle || !seoDesc) {
-                Swal.fire('Peringatan', 'Mohon lengkapi semua field form.', 'warning'); return;
-            }
-
-            const loader = document.getElementById('loader-form');
-            loader.style.display = 'flex';
-
-            try {
-                let profilePicPath = null;
-                // Upload gambar jika ada
-                if (profilePicFile) {
-                    const ext = profilePicFile.name.split('.').pop();
-                    const uniqueFileName = `profile_${slug}_${Date.now()}.webp`;
-                    profilePicPath = await uploadImageToGithub(profilePicFile, uniqueFileName);
-                } else {
-                    // Jika edit dan tidak upload baru, ambil dari preview (existing path)
-                    const previewImg = document.getElementById('profilePreview');
-                    if (previewImg.style.display !== 'none' && previewImg.src) {
-                        let src = previewImg.src;
-                        let relativePath = src.substring(src.indexOf('/assets/'));
-                        if (relativePath.startsWith('/')) relativePath = relativePath.substring(1);
-                        profilePicPath = relativePath;
-                    } else {
-                        // Default gambar jika tidak ada sama sekali (pastikan file default ada di repo)
-                        profilePicPath = 'assets/img/galeri/default_profile.webp';
-                    }
-                }
-
-                // Metadata JSON
-                const metaJson = JSON.stringify({ 
-                    slug, salesName, waNumber, seoTitle, seoDesc, 
-                    profilePicPath: profilePicPath 
+    // ==================== Daftar Halaman ====================
+    async function loadPagesList() {
+        const apiUrl = getGitHubApiUrl();
+        const conf = checkConfigStatus();
+        if(!apiUrl) { document.getElementById('tableDataBody').innerHTML = '<td><td colspan="4" class="text-center text-danger">Atur konfigurasi GitHub terlebih dahulu.</div></div>'; return; }
+        const loader = document.getElementById('loader-list');
+        const tbody = document.getElementById('tableDataBody');
+        loader.style.display = 'flex';
+        try {
+            const response = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${conf.token}` } });
+            if (!response.ok) throw new Error("Gagal mengambil data dari GitHub");
+            const files = await response.json();
+            let html = ''; let counter = 1;
+            const htmlFiles = files.filter(f => f.name.endsWith('.html') && f.name !== 'admin.html');
+            if(htmlFiles.length === 0) html = '<tr><td colspan="4" class="text-center text-muted">Belum ada halaman sales.</div></div></tr>';
+            else {
+                htmlFiles.forEach(file => {
+                    html += `<tr><td>${counter++}</td><td><span class="badge bg-secondary">${file.name}</span></td><td><a href="/${file.name}" target="_blank" class="text-primary"><i class="fas fa-link fa-sm"></i> ${file.name}</a></td><td class="text-center"><button class="btn btn-sm btn-info text-white me-1" onclick="editPage('${file.name}', '${file.sha}')"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-danger" onclick="deletePage('${file.name}', '${file.sha}')"><i class="fas fa-trash-alt"></i></button></td></tr>`;
                 });
-
-                let templateRaw = document.getElementById('html-template').textContent;
-                const waMsgEncoded = encodeURIComponent(`Halo Kak ${salesName}, saya ingin bertanya tentang promo motor Honda.`);
-
-                let newHtml = templateRaw
-                    .replace(/{{META_JSON}}/g, metaJson.replace(/\\/g, '\\\\'))
-                    .replace(/{{SEO_TITLE}}/g, seoTitle)
-                    .replace(/{{SEO_DESC}}/g, seoDesc)
-                    .replace(/{{SALES_NAME}}/g, salesName)
-                    .replace(/{{WA_NUMBER}}/g, waNumber)
-                    .replace(/{{WA_MSG_ENCODED}}/g, waMsgEncoded)
-                    .replace(/{{PROFILE_PIC_PATH}}/g, profilePicPath);
-
-                const utf8Bytes = new TextEncoder().encode(newHtml);
-                const base64String = btoa(String.fromCharCode(...utf8Bytes));
-
-                const fileName = `${slug}.html`;
-                const apiUrl = getGitHubApiUrl(fileName);
-
-                let targetSha = currentSha;
-                if (!targetSha || (currentSha && slug !== originalSlug)) {
-                    const checkRes = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${conf.token}` } });
-                    if (checkRes.ok) {
-                        const existingFile = await checkRes.json();
-                        targetSha = existingFile.sha;
-                    } else {
-                        targetSha = null;
-                    }
-                }
-
-                const payload = {
-                    message: targetSha ? `CMS: Update ${fileName}` : `CMS: Tambah ${fileName}`,
-                    content: base64String
-                };
-                if (targetSha) payload.sha = targetSha;
-
-                const response = await fetch(apiUrl, {
-                    method: 'PUT',
-                    headers: { 'Authorization': `Bearer ${conf.token}`, 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errText = await response.text();
-                    throw new Error(`Upload HTML gagal (${response.status}): ${errText}`);
-                }
-
-                Swal.fire({ icon: 'success', title: 'Berhasil!', text: `Halaman ${fileName} berhasil ${targetSha ? 'diperbarui' : 'dibuat'}.` });
-                resetForm();
-                switchView('list', document.querySelectorAll('.nav-item')[2]);
-            } catch (error) {
-                console.error(error);
-                Swal.fire('Gagal Mem-publish', error.message, 'error');
-            } finally {
-                loader.style.display = 'none';
             }
-        }
+            tbody.innerHTML = html;
+        } catch (error) { tbody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">${error.message}</td></tr>`; }
+        finally { loader.style.display = 'none'; }
+    }
 
-        // Preview gambar saat memilih file
-        document.getElementById('profilePicFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(ev) {
+    // ==================== Reset Form ====================
+    function resetForm() {
+        document.getElementById('pageForm').reset();
+        document.getElementById('fileSha').value = '';
+        document.getElementById('originalSlug').value = '';
+        document.getElementById('pageSlug').readOnly = false;
+        document.getElementById('formTitle').innerText = 'Tambah Halaman Baru';
+        document.getElementById('profilePreview').style.display = 'none';
+        document.getElementById('profilePreview').src = '';
+        document.getElementById('profilePicFile').value = '';
+    }
+
+    // ==================== Edit Page ====================
+    async function editPage(fileName, sha) {
+        const apiUrl = getGitHubApiUrl(fileName);
+        const conf = checkConfigStatus();
+        Swal.fire({ title: 'Memuat Data...', allowOutsideClick: false, didOpen: () => { Swal.showLoading() } });
+        try {
+            const response = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${conf.token}` } });
+            if (!response.ok) throw new Error("Gagal mengambil isi file");
+            const fileData = await response.json();
+            const binaryStr = atob(fileData.content);
+            const bytes = new Uint8Array(binaryStr.length);
+            for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
+            const decodedContent = new TextDecoder('utf-8').decode(bytes);
+            const metaRegex = /<!-- CMS_META: (.*?) -->/;
+            const match = decodedContent.match(metaRegex);
+            if(match && match[1]) {
+                const metaData = JSON.parse(match[1]);
+                document.getElementById('pageSlug').value = metaData.slug;
+                document.getElementById('salesName').value = metaData.salesName;
+                document.getElementById('waNumber').value = metaData.waNumber;
+                document.getElementById('seoTitle').value = metaData.seoTitle;
+                document.getElementById('seoDesc').value = metaData.seoDesc;
+                if (metaData.profilePicPath) {
                     const preview = document.getElementById('profilePreview');
-                    preview.src = ev.target.result;
+                    preview.src = `/${metaData.profilePicPath}`;
                     preview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                document.getElementById('profilePreview').style.display = 'none';
+                }
+                document.getElementById('fileSha').value = sha;
+                document.getElementById('originalSlug').value = metaData.slug;
+                document.getElementById('formTitle').innerText = `Edit Halaman: ${fileName}`;
+                Swal.close();
+                switchView('form', document.querySelectorAll('.nav-item')[1]);
+            } else throw new Error("Metadata tidak ditemukan di file ini.");
+        } catch (error) { Swal.fire('Error', error.message, 'error'); }
+    }
+
+    // ==================== Delete Page ====================
+    async function deletePage(fileName, sha) {
+        const conf = checkConfigStatus();
+        const apiUrl = getGitHubApiUrl(fileName);
+        Swal.fire({ title: 'Yakin hapus?', text: `File ${fileName} akan dihapus permanen!`, icon: 'warning', showCancelButton: true, confirmButtonColor: '#d33', cancelButtonColor: '#6c757d', confirmButtonText: 'Ya, Hapus!' }).then(async (result) => {
+            if (result.isConfirmed) {
+                Swal.fire({ title: 'Menghapus...', allowOutsideClick: false, didOpen: () => { Swal.showLoading() } });
+                try {
+                    const payload = { message: `CMS: Hapus ${fileName}`, sha: sha };
+                    const response = await fetch(apiUrl, { method: 'DELETE', headers: { 'Authorization': `Bearer ${conf.token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    if (!response.ok) throw new Error("Gagal hapus file");
+                    Swal.fire('Terhapus!', 'Halaman berhasil dihapus.', 'success');
+                    loadPagesList();
+                } catch (error) { Swal.fire('Error', error.message, 'error'); }
             }
         });
-    </script>
+    }
+
+    // ==================== Generate & Publish ====================
+    async function generateAndPushPage() {
+        const conf = checkConfigStatus();
+        if(!conf) { Swal.fire('Error', 'Silakan atur Konfigurasi GitHub terlebih dahulu.', 'error'); return; }
+
+        const slug = document.getElementById('pageSlug').value.trim().toLowerCase();
+        const salesName = document.getElementById('salesName').value.trim();
+        const waNumber = document.getElementById('waNumber').value.trim();
+        const seoTitle = document.getElementById('seoTitle').value.trim();
+        const seoDesc = document.getElementById('seoDesc').value.trim();
+        const currentSha = document.getElementById('fileSha').value;
+        const originalSlug = document.getElementById('originalSlug').value;
+        const profilePicFile = document.getElementById('profilePicFile').files[0];
+
+        if(!slug || !salesName || !waNumber || !seoTitle || !seoDesc) {
+            Swal.fire('Peringatan', 'Mohon lengkapi semua field form.', 'warning'); return;
+        }
+
+        const loader = document.getElementById('loader-form');
+        loader.style.display = 'flex';
+
+        try {
+            let profilePicPath = null;
+            if (profilePicFile) {
+                const uniqueFileName = `profile_${slug}_${Date.now()}.webp`;
+                profilePicPath = await uploadImageToGithub(profilePicFile, uniqueFileName);
+            } else {
+                const previewImg = document.getElementById('profilePreview');
+                if (previewImg.style.display !== 'none' && previewImg.src) {
+                    let src = previewImg.src;
+                    let relativePath = src.substring(src.indexOf('/assets/'));
+                    if (relativePath.startsWith('/')) relativePath = relativePath.substring(1);
+                    profilePicPath = relativePath;
+                } else {
+                    profilePicPath = 'assets/img/galeri/default_profile.webp';
+                }
+            }
+
+            const metaJson = JSON.stringify({ slug, salesName, waNumber, seoTitle, seoDesc, profilePicPath });
+            let templateRaw = document.getElementById('html-template').textContent;
+            const waMsgEncoded = encodeURIComponent(`Halo Kak ${salesName}, saya ingin bertanya tentang promo motor Honda.`);
+
+            let newHtml = templateRaw
+                .replace(/{{META_JSON}}/g, metaJson.replace(/\\/g, '\\\\'))
+                .replace(/{{SEO_TITLE}}/g, seoTitle)
+                .replace(/{{SEO_DESC}}/g, seoDesc)
+                .replace(/{{SALES_NAME}}/g, salesName)
+                .replace(/{{WA_NUMBER}}/g, waNumber)
+                .replace(/{{WA_MSG_ENCODED}}/g, waMsgEncoded)
+                .replace(/{{PROFILE_PIC_PATH}}/g, profilePicPath);
+
+            const utf8Bytes = new TextEncoder().encode(newHtml);
+            const base64String = btoa(String.fromCharCode(...utf8Bytes));
+
+            const fileName = `${slug}.html`;
+            const apiUrl = getGitHubApiUrl(fileName);
+
+            let targetSha = currentSha;
+            if (!targetSha || (currentSha && slug !== originalSlug)) {
+                const checkRes = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${conf.token}` } });
+                if (checkRes.ok) { const existingFile = await checkRes.json(); targetSha = existingFile.sha; }
+                else targetSha = null;
+            }
+
+            const payload = { message: targetSha ? `CMS: Update ${fileName}` : `CMS: Tambah ${fileName}`, content: base64String };
+            if (targetSha) payload.sha = targetSha;
+
+            const response = await fetch(apiUrl, { method: 'PUT', headers: { 'Authorization': `Bearer ${conf.token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            if (!response.ok) throw new Error(`Upload HTML gagal (${response.status}): ${await response.text()}`);
+
+            Swal.fire({ icon: 'success', title: 'Berhasil!', text: `Halaman ${fileName} berhasil ${targetSha ? 'diperbarui' : 'dibuat'}.` });
+            resetForm();
+            switchView('list', document.querySelectorAll('.nav-item')[2]);
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Gagal Mem-publish', error.message, 'error');
+        } finally {
+            loader.style.display = 'none';
+        }
+    }
+
+    // Preview gambar
+    document.getElementById('profilePicFile').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                const preview = document.getElementById('profilePreview');
+                preview.src = ev.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else { document.getElementById('profilePreview').style.display = 'none'; }
+    });
+</script>
 </body>
 </html><script src="assets/bootstrap/js/bootstrap.min.js"></script><script src="assets/js/script.min.js"></script></body></html>
