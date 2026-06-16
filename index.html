@@ -10,20 +10,152 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head><body style="font-family: Poppins, sans-serif;"><nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3 navbar-custom"><div class="container"><a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#"><img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/assets/images/logo/honda.svg" alt="Honda" width="170" height="28" style="height: auto;"></a><button class="btn d-lg-none px-3 py-1 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="font-size: 16px;">Cek Kredit</button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav align-items-center ms-auto"><li class="nav-item"><a class="nav-link fw-medium" data-bs-target="#simulasi-kredit" data-bs-toggle="modal" href="#">Cek Simulasi</a></li><li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn w-100 btn-custom-primary" role="button" href="https://wa.me/6281359852804" target="_blank" style="font-size: 16px;"><i class="fab fa-whatsapp me-2"></i>Hubungi Admin</a></li></ul></div></div></nav><div class="hero-bg"></div><div class="container text-center d-flex flex-column justify-content-center align-items-center mb-5 profile-wrapper"><div><div style="position: absolute;margin-top: 106px;margin-right: 0px;margin-left: 158px;"><span class="badge" style="position: absolute;bottom: 0px;background: rgb(0,200,20);padding-top: 6.2px;padding-bottom: 6.2px;padding-right: 5.8px;padding-left: 5.8px;border-radius: 16px;"><span class="spinner-grow spinner-grow-sm" role="status" style="width: 10px;height: 10px;margin-right: 3px;"></span>Online</span></div><img id="profilePic" src="assets/img/galeri/1.webp" alt="Putri MPM" class="profile-img"></div><h3 class="fw-bold mt-3 mb-0">MPM Motor Simpang</h3><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;"><i class="fas fa-id-card-alt me-2"></i>Dealer MPM Motor Simpang Surabaya</p><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Melayani pembelian sepeda motor secara cash &amp; credit.</p><div class="d-flex justify-content-center flex-wrap gap-3 mt-4" style="max-width: 600px;width: 100%;padding: 16px;background: #ededed;border-radius: 30px;"><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Cek simulasi kredit sekarang</p><button class="btn shadow-sm px-4 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="width: 100%;"><i class="fas fa-calculator me-2"></i>Simulasi Kredit            </button><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Konsultasi via whatsapp</p><a class="btn shadow-sm px-4 btn-custom-primary" role="button" style="width: 100%;" href="https://api.whatsapp.com/send/?phone=6281359852804&amp;text=Halo+Kak+Ella+Saya+ingin+melakukan+pembelian+motor+Honda"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Buat janji temu via whatsapp</p><a class="btn shadow-sm px-4 btn-custom-primary" role="button" style="width: 100%;" href="janji-temu.html"><i class="fas fa-th-list me-2"></i>Buat Janji Temu</a></div></div><div class="container mb-5"><div class="d-flex flex-column justify-content-between gap-3 flex-md-row align-items-md-center mb-3"><h3 class="fw-bold mb-0"><i class="text-danger me-2 bi bi-motorcycle"></i>Katalog Motor</h3><div class="input-group bg-white border rounded-pill shadow-sm overflow-hidden search-container" style="max-width:350px;"><span class="text-muted bg-transparent border-0 ps-3 input-group-text"><svg class="bi bi-search" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+</head><body style="font-family: Poppins, sans-serif;"><nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3 navbar-custom"><div class="container"><a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#"><img src="https://ik.imagekit.io/zlt25mb52fx/ahmcdn/assets/images/logo/honda.svg" alt="Honda" width="170" height="28" style="height: auto;"></a><button class="btn d-lg-none px-3 py-1 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="font-size: 16px;">Cek Kredit</button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav align-items-center ms-auto"><li class="nav-item"><a class="nav-link fw-medium" data-bs-target="#simulasi-kredit" data-bs-toggle="modal" href="#">Cek Simulasi</a></li><li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn w-100 btn-custom-primary d-none-if-param" role="button" href="https://wa.me/6281359852804" target="_blank" style="font-size: 16px;"><i class="fab fa-whatsapp me-2"></i>Hubungi Admin</a></li></ul></div></div></nav><div class="hero-bg"></div><div class="container text-center d-flex flex-column justify-content-center align-items-center mb-5 profile-wrapper"><div><div style="position: absolute;margin-top: 106px;margin-right: 0px;margin-left: 158px;"><span class="badge" style="position: absolute;bottom: 0px;background: rgb(0,200,20);padding-top: 6.2px;padding-bottom: 6.2px;padding-right: 5.8px;padding-left: 5.8px;border-radius: 16px;"><span class="spinner-grow spinner-grow-sm" role="status" style="width: 10px;height: 10px;margin-right: 3px;"></span>Online</span></div><img id="profilePic" src="assets/img/galeri/1.webp" alt="Putri MPM" class="profile-img"></div><h3 class="fw-bold mt-3 mb-0" id="userInfo">MPM Motor Simpang</h3><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;"><i class="fas fa-id-card-alt me-2"></i>Dealer MPM Motor Simpang Surabaya</p><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Melayani pembelian sepeda motor secara cash &amp; credit.</p><div class="d-flex justify-content-center flex-wrap gap-3 mt-4" style="max-width: 600px;width: 100%;padding: 16px;background: #ededed;border-radius: 30px;"><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Cek simulasi kredit sekarang</p><button class="btn shadow-sm px-4 btn-custom-primary" data-bs-toggle="modal" data-bs-target="#simulasi-kredit" style="width: 100%;"><i class="fas fa-calculator me-2"></i>Simulasi Kredit            </button><p class="fw-medium text-muted mt-1" style="margin-bottom: 1px;">Konsultasi via whatsapp</p><a class="btn shadow-sm px-4 btn-custom-primary" role="button" id="waDinamis" style="width: 100%;" href="https://api.whatsapp.com/send/?phone=6281359852804&amp;text=Halo+Kak+Ella+Saya+ingin+melakukan+pembelian+motor+Honda"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a><p class="fw-medium text-muted mt-1 d-none-if-param" style="margin-bottom: 1px;">Buat janji temu via whatsapp</p><a class="btn shadow-sm px-4 btn-custom-primary d-none-if-param" role="button" style="width: 100%;" href="janji-temu.html"><i class="fas fa-th-list me-2"></i>Buat Janji Temu</a></div></div><div class="container mb-5"><div class="d-flex flex-column justify-content-between gap-3 flex-md-row align-items-md-center mb-3"><h3 class="fw-bold mb-0"><i class="text-danger me-2 bi bi-motorcycle"></i>Katalog Motor</h3><div class="input-group bg-white border rounded-pill shadow-sm overflow-hidden search-container" style="max-width:350px;"><span class="text-muted bg-transparent border-0 ps-3 input-group-text"><svg class="bi bi-search" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
 </svg></span><input class="bg-transparent border-0 form-control py-2" type="text" id="searchKatalog" placeholder="Cari motor impianmu..." onkeyup="filterKatalog()"></div></div><div class="d-flex overflow-auto gap-2 mb-3 pb-3 hide-scrollbar" id="categoryTabs"></div><div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-4" id="katalogMotorContainer"><div class="col-12" id="loadingKatalog" style="width: 100%;position: absolute;"><div class="card text-muted text-center shadow-sm h-100 p-3 motor-card"><p style="margin-bottom: 0px;"><span class="spinner-border spinner-border-sm" role="status" style="margin-right: 5px;"></span>Harap tunggu..</p></div></div></div></div><footer class="text-center text-white bg-dark py-4" style="margin-top: 86px;"><p class="text-white-50 mb-0" style="font-size: 15px;">© 2026 Ella MPM Motor Simpang - Surabaya</p></footer><div class="modal fade" role="dialog" tabindex="-1" id="simulasi-kredit" style="font-size: 16px;"><div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document"><div class="modal-content border-0 shadow-lg" style="border-radius:20px;"><div class="modal-header border-0 pb-0"><h5 class="modal-title fw-bold text-dark"><svg class="bi bi-calculator-fill text-danger me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
   <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"></path>
 </svg>Simulasi Kredit</h5><button class="btn-close bg-light rounded-circle p-2" data-bs-dismiss="modal" type="button"></button></div><div class="modal-body pt-3"><div class="text-center bg-light rounded-4 my-4 py-4" id="loadingData"><span class="spinner-border spinner-border-sm" role="status"></span><p class="small text-muted mt-2 mb-0">Harap Tunggu</p></div><form id="kreditForm" style="display: none;"><div class="mb-3"><label class="form-label small fw-semibold text-muted">Kategori Motor</label><select class="bg-light form-select form-select-lg" disabled="" id="jenisMotor" required="" style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Memuat...</option></select></div><div class="mb-3"><label class="form-label small fw-semibold text-muted">Tipe Motor</label><select class="bg-light form-select form-select-lg" disabled="" id="tipeMotor" required="" style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Pilih Kategori Dulu</option></select></div><div class="mb-4"><label class="form-label small fw-semibold text-muted">Uang Muka</label><select class="bg-light form-select form-select-lg" disabled="" id="dp" required="" style="font-size: 16px;border-radius: 16px;border: 1px solid rgb(228,3,17) ;"><option value="">Pilih Tipe Motor Dulu</option></select></div><button class="btn rounded-4 w-100 py-3 btn-custom-primary" type="button" onclick="calculateInstallment()">Hitung Angsuran</button></form><div id="result" style="display: none;margin-top: 24px;"><h6 class="fw-bold text-center mb-3" id="resMotor" style="font-size: 25px;">Motor</h6><div class="text-center mb-3"><img class="img-fluid rounded-3" id="resGambar" alt="Motor" src="" style="max-height: 300px;object-fit: contain;"></div><div class="result-box" style="margin-bottom: 16px;"><div class="result-row"><span class="text-muted">Uang Muka</span><strong class="text-danger" id="resDP"></strong></div><hr class="my-2 border-secondary border-opacity-25"><div class="result-row"><span class="text-muted">Tenor 11x</span><strong id="res12"></strong></div><div class="result-row"><span class="text-muted">Tenor 17x</span><strong id="res18"></strong></div><div class="result-row"><span class="text-muted">Tenor 23x</span><strong id="res24"></strong></div><div class="result-row"><span class="text-muted">Tenor 29x</span><strong id="res30"></strong></div><div class="result-row"><span class="text-muted">Tenor 35x</span><strong id="res36"></strong></div></div><div class="text-center mt-4"><p class="small text-muted mb-2">Silahkan screenshoot atau klik tombol Ajukan sekarang!</p><p class="small mb-2" style="color: rgba(193,0,0,0.75);">Harga dapat berubah rubah*</p></div><img class="img-fluid" width="2433" height="1400" src="assets/img/galeri/3.webp" style="border-radius: 16px;width: 100%;"><div class="text-center mt-4"><p class="small text-muted mb-2">Dealer MPM Motor Simpang - Surabaya</p><p class="small mb-2" style="color: rgba(193,0,0,0.75);">Untuk menanyakan produk yang di pilih, klik ajukan sekarang</p><button class="btn btn-success fw-bold rounded-4 shadow-sm w-100 py-3 pulse animated infinite" onclick="sendWhatsApp()"><svg class="bi bi-whatsapp me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
   <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"></path>
 </svg>TANYAKAN PRODUK</button><button class="btn btn-light rounded-4 w-100 mt-2 py-2 text-secondary" onclick="resetForm()">Hitung Ulang</button></div></div></div></div></div></div><script>
-    // --- URL GOOGLE APPS SCRIPT ---
+    // ======================== KONFIGURASI AWAL ========================
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyU5O8DhoHqWzsVRNvl_uiFCsnGW4mPJRjytsEgsOq8RlhM1kFgoFZk2nLWkLtFXiCd/exec'; 
     let globalData = [];
     let activeCategory = 'Semua';
 
+    // ========== FUNGSI LOCALSTORAGE DENGAN EXPIRE 24 JAM ==========
+    // Simpan data + timestamp (dalam milidetik)
+    function saveContactToLocalStorage(nama, nomorwa) {
+        const now = Date.now();
+        const data = {
+            nama: nama && nama.trim() !== "" ? nama.trim() : "",
+            nomorwa: nomorwa && nomorwa.trim() !== "" ? nomorwa.trim() : "",
+            timestamp: now
+        };
+        localStorage.setItem('user_data', JSON.stringify(data));
+        console.log('✅ Data disimpan ke localStorage dengan timestamp', new Date(now).toLocaleString());
+    }
+
+    // Ambil data, jika expired (lebih dari 24 jam) maka hapus dan return kosong
+    function getContactFromLocalStorage() {
+        const raw = localStorage.getItem('user_data');
+        if (!raw) return { nama: '', nomorwa: '' };
+        
+        try {
+            const data = JSON.parse(raw);
+            const now = Date.now();
+            const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000; // 24 jam dalam ms
+            
+            if (data.timestamp && (now - data.timestamp) > TWENTY_FOUR_HOURS) {
+                // Data sudah kadaluarsa, hapus dari localStorage
+                localStorage.removeItem('user_data');
+                console.log('⏰ Data kadaluarsa (lebih dari 24 jam), dihapus');
+                return { nama: '', nomorwa: '' };
+            }
+            
+            // Data masih berlaku
+            return { nama: data.nama || '', nomorwa: data.nomorwa || '' };
+        } catch(e) {
+            // Jika format rusak, hapus
+            localStorage.removeItem('user_data');
+            return { nama: '', nomorwa: '' };
+        }
+    }
+
+    // Hapus data manual (opsional jika ingin tombol hapus)
+    function clearContactLocalStorage() {
+        localStorage.removeItem('user_data');
+        console.log('🗑️ Data dihapus dari localStorage');
+    }
+
+    function updateUserInfoDisplay() {
+        const { nama, nomorwa } = getContactFromLocalStorage();
+        const infoDiv = document.getElementById('userInfo');
+        if (infoDiv) {
+            if (nama) {
+                let nomorTampil = nomorwa ? nomorwa.substring(0, 4) + '****' + nomorwa.slice(-3) : '';
+                infoDiv.innerHTML = `${nama} ${nomorTampil ? '| 📞 '+nomorTampil : ''} `;
+            } else {
+                infoDiv.innerHTML = 'MPM MOTOR SIMPANG';
+            }
+        }
+    }
+
+    // Update tombol WhatsApp dinamis (di hero)
+    function updateWaButton() {
+        const { nomorwa, nama } = getContactFromLocalStorage();
+        const waButton = document.getElementById('waDinamis');
+        if (!waButton) return;
+        
+        const targetNumber = (nomorwa && nomorwa.trim() !== "") ? nomorwa : "6281359852804";
+        let messageText = "Halo%20Kak%20Ella%20Saya%20ingin%20melakukan%20pembelian%20motor%20Honda";
+        if (nama && nama.trim() !== "") {
+            messageText = `Halo%2C%20saya%20${encodeURIComponent(nama)}%20ingin%20membeli%20motor`;
+        }
+        
+        waButton.href = `https://api.whatsapp.com/send/?phone=${targetNumber}&text=${messageText}`;
+        waButton.title = `Kirim WA ke ${targetNumber}`;
+    }
+
+    // Fungsi untuk menyembunyikan/menampilkan elemen berdasarkan ada tidaknya parameter (atau data valid)
+    // Tapi parameter sudah dihapus dari URL, jadi kita cek apakah ada data nama/nomor yang tidak kadaluarsa
+    // Atau lebih tepat: sembunyikan jika data dari localStorage (yang belum expired) ada nama atau nomor? 
+    // Sesuai permintaan: "jika menggunakan parameter. terdapat elemen yang di sembunyikan"
+    // Karena parameter langsung tersimpan, maka kita sembunyikan elemen jika data (nama atau nomor) tersedia dan tidak expired.
+    function toggleElementsByParam(hasValidData) {
+        const elements = document.querySelectorAll('.d-none-if-param');
+        elements.forEach(el => {
+            if (hasValidData) {
+                el.style.display = 'none';
+            } else {
+                el.style.display = '';
+            }
+        });
+    }
+
+    // ========== FUNGSI PARAMETER URL ==========
+    function getParameterFromURL(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Proses parameter URL saat halaman dimuat
+    (function processUrlParameters() {
+        const urlNama = getParameterFromURL('nama');
+        const urlNomor = getParameterFromURL('nomorwa');
+        
+        // Cek apakah ada parameter yang valid (tidak null dan tidak kosong)
+        const hasValidParam = (urlNama !== null && urlNama.trim() !== "") || (urlNomor !== null && urlNomor.trim() !== "");
+        
+        if (hasValidParam) {
+            let existing = getContactFromLocalStorage(); // bisa jadi expired
+            let newNama = (urlNama !== null && urlNama.trim() !== "") ? urlNama.trim() : existing.nama;
+            let newNomor = (urlNomor !== null && urlNomor.trim() !== "") ? urlNomor.trim() : existing.nomorwa;
+            // Simpan dengan timestamp baru
+            saveContactToLocalStorage(newNama, newNomor);
+            console.log('✅ Parameter dari URL disimpan ke localStorage dengan timestamp baru');
+        }
+        
+        // Ambil data terkini (mungkin expired)
+        const currentData = getContactFromLocalStorage();
+        const hasData = (currentData.nama !== "" || currentData.nomorwa !== "");
+        
+        // Sembunyikan elemen jika ada data (berasal dari parameter sebelumnya atau sekarang)
+        toggleElementsByParam(hasData);
+        
+        // Bersihkan URL dari parameter (agar tidak mengganggu tampilan dan reload)
+        if (window.history && window.history.replaceState) {
+            let cleanURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.replaceState({}, document.title, cleanURL);
+        }
+        
+        updateUserInfoDisplay();
+        updateWaButton();
+    })();
+
+    // ========== FUNGSI FORMAT RUPIAH ==========
     const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
+    // ========== LOAD DATA DARI GOOGLE APPS SCRIPT ==========
     window.onload = async () => {
         try {
             const response = await fetch(APPS_SCRIPT_URL, { redirect: "follow" });
@@ -37,32 +169,32 @@
             
             setupDropdowns();
             renderCategoryTabs();
-            filterKatalog(); // Memanggil filter pertama kali (memuat semua)
+            filterKatalog();
+            
+            // Pastikan tombol WA diperbarui lagi (jika ada perubahan)
+            updateWaButton();
         } catch (error) {
             console.error("Gagal mengambil data:", error);
-            document.getElementById('loadingData').innerHTML = '<p class="text-danger">Gagal terhubung ke server. Silakan muat ulang halaman.</p>';
-            document.getElementById('loadingKatalog').innerHTML = '<p class="text-danger mt-3">Gagal memuat katalog.</p>';
+            document.getElementById('loadingData').innerHTML = '<p class="text-danger">Gagal terhubung ke server.</p>';
+            document.getElementById('loadingKatalog').innerHTML = '<p class="text-danger mt-3">Gagal memuat katalog. Coba refresh halaman.</p>';
             
-            // SweetAlert Error Fetch
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal Memuat Data',
                 text: 'Terjadi masalah saat mengambil data dari server. Silakan coba muat ulang halaman.',
                 confirmButtonColor: '#d33',
                 confirmButtonText: 'Muat Ulang',
-                preConfirm: () => {
-                    location.reload();
-                }
+                preConfirm: () => location.reload()
             });
         }
     };
 
+    // ========== DROPDOWN DINAMIS ==========
     function setupDropdowns() {
         const jenisSelect = document.getElementById('jenisMotor');
         const tipeSelect = document.getElementById('tipeMotor');
         const dpSelect = document.getElementById('dp');
 
-        // Filter data kosong/undefined untuk jenis motor
         const uniqueJenis = [...new Set(globalData.map(item => item['Jenis Motor']).filter(Boolean))];
         
         jenisSelect.innerHTML = '<option value="" disabled selected>-- Pilih Kategori --</option>';
@@ -100,19 +232,18 @@
         });
     }
 
+    // ========== HITUNG CICILAN ==========
     function calculateInstallment() {
         const jenis = document.getElementById('jenisMotor').value;
         const tipe = document.getElementById('tipeMotor').value;
         const dp = document.getElementById('dp').value;
 
-        // --- GANTI ALERT DENGAN SWEETALERT ---
         if(!jenis || !tipe || !dp) { 
             Swal.fire({
                 icon: 'warning',
                 title: 'Data Belum Lengkap',
                 text: 'Mohon lengkapi pilihan Jenis, Tipe, dan Uang Muka sebelum melanjutkan.',
-                confirmButtonColor: '#d33', // Merah sesuai tema
-                confirmButtonText: 'OK'
+                confirmButtonColor: '#d33'
             });
             return; 
         }
@@ -122,7 +253,6 @@
         if(result) {
             const imgUrl = result['URL Gambar'] ? result['URL Gambar'] : 'https://via.placeholder.com/400x300?text=Gambar+Belum+Tersedia';
             document.getElementById('resGambar').src = imgUrl;
-
             document.getElementById('resMotor').innerText = `${result['Tipe Motor']}`;
             document.getElementById('resDP').innerText = formatRp(result['Uang Muka']);
             document.getElementById('res12').innerText = formatRp(result['11 Bulan']) + ' /bln';
@@ -134,7 +264,6 @@
             document.getElementById('kreditForm').style.display = 'none';
             document.getElementById('result').style.display = 'block';
         } else {
-            // Fallback jika data tidak ditemukan (jarang terjadi jika dropdown benar)
             Swal.fire({
                 icon: 'error',
                 title: 'Data Tidak Ditemukan',
@@ -149,50 +278,53 @@
         document.getElementById('kreditForm').style.display = 'block';
     }
 
+    // ========== KIRIM WHATSAPP DARI MODAL SIMULASI ==========
     function sendWhatsApp() {
         const motor = document.getElementById('resMotor').innerText;
         const dp = document.getElementById('resDP').innerText;
+        const { nama, nomorwa } = getContactFromLocalStorage();
         
-        const message = `Halo Min,\nSaya tertarik mengajukan kredit untuk motor *${motor}*.\nRencana Uang Muka (DP): *${dp}*.\n\nMohon informasi persyaratannya. Terima kasih!`;
+        const defaultSalesNumber = "6281359852804";
+        const targetNomor = (nomorwa && nomorwa.trim() !== "") ? nomorwa : defaultSalesNumber;
         
-        // Opsional: Konfirmasi sebelum kirim WA (supaya lebih interaktif)
+        const sapaan = nama ? `Halo kak ${nama},\n\n` : "\n";
+        const message = `${sapaan}Saya tertarik mengajukan kredit untuk motor *${motor}*.\nRencana Uang Muka (DP): *${dp}*.\n\nMohon informasi persyaratannya. Terima kasih!`;
+        
         Swal.fire({
-            title: 'Hubungi Sales?',
-            text: "Anda akan diarahkan ke WhatsApp untuk mengirim pesan ini.",
+            title: 'Hubungi via WhatsApp?',
+            text: nama ? `${nama}, Anda akan mengirim pesan ke nomor ${targetNomor}.` : "Anda akan diarahkan ke WhatsApp.",
             icon: 'question',
             showCancelButton: true,
-            confirmButtonColor: '#25D366', // Warna Hijau WA
+            confirmButtonColor: '#25D366',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Ya, Kirim WA',
             cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.open(`https://wa.me/6281359852804?text=${encodeURIComponent(message)}`, '_blank');
+                window.open(`https://wa.me/${targetNomor}?text=${encodeURIComponent(message)}`, '_blank');
             }
         });
     }
 
-    // Fungsi Render Tab Kategori
+    // ========== KATALOG & TAB ==========
     function renderCategoryTabs() {
         const tabsContainer = document.getElementById('categoryTabs');
-        const uniqueCategories = [...new Set(globalData.map(item => item['Jenis Motor']).filter(val => val !== undefined && val !== ""))];
+        const uniqueCategories = [...new Set(globalData.map(item => item['Jenis Motor']).filter(val => val && val !== ""))];
         const categories = ['Semua', ...uniqueCategories];
 
         if(tabsContainer) {
             tabsContainer.innerHTML = categories.map(cat => `
-                <button class="btn tab-btn ${cat === activeCategory ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>
+                <button class="btn tab-btn ${cat === activeCategory ? 'active' : ''}" onclick="setCategory('${cat.replace(/'/g, "\\'")}')">${cat}</button>
             `).join('');
         }
     }
 
-    // Fungsi Mengatur Kategori yang Aktif
     function setCategory(cat) {
         activeCategory = cat;
-        renderCategoryTabs(); // Perbarui kelas 'active' pada tab
-        filterKatalog(); // Terapkan penyaringan
+        renderCategoryTabs();
+        filterKatalog();
     }
 
-    // Fungsi Filter Data berdasarkan Kategori & Pencarian
     function filterKatalog() {
         const searchInput = document.getElementById('searchKatalog');
         const keyword = searchInput ? searchInput.value.toLowerCase() : '';
@@ -200,23 +332,17 @@
         const filteredData = globalData.filter(item => {
             const tipe = (item['Tipe Motor'] || '').toLowerCase();
             const jenis = (item['Jenis Motor'] || '');
-            
-            // Logika Pencarian Nama/Tipe
             const matchSearch = tipe.includes(keyword) || jenis.toLowerCase().includes(keyword);
-            // Logika Tab Kategori
             const matchCategory = activeCategory === 'Semua' || jenis === activeCategory;
-
             return matchSearch && matchCategory;
         });
         
         renderCatalog(filteredData);
     }
 
-    // Fungsi Render Katalog
     function renderCatalog(dataArray) {
         const container = document.getElementById('katalogMotorContainer');
         if(!container) return;
-        
         container.innerHTML = '';
         
         const uniqueTipe = [];
@@ -229,11 +355,10 @@
         });
 
         if(catalogItems.length === 0) {
-            container.innerHTML = `
-                <div class="col-12 text-center text-muted py-5">
-                    <i class="bi bi-search fs-1 text-secondary opacity-50 mb-3 d-block"></i>
-                    <p>Kendaraan tidak ditemukan di kategori ini.</p>
-                </div>`;
+            container.innerHTML = `<div class="col-12 text-center text-muted py-5">
+                <i class="fas fa-search fs-1 text-secondary opacity-50 mb-3 d-block"></i>
+                <p>Kendaraan tidak ditemukan di kategori ini.</p>
+            </div>`;
             return;
         }
 
@@ -261,7 +386,6 @@
     }
 
     function openSimulasi(jenis, tipe) {
-        // Asumsi menggunakan Bootstrap Modal
         const modalElement = document.getElementById('simulasi-kredit');
         if (modalElement) {
             const modal = new bootstrap.Modal(modalElement);
@@ -284,7 +408,7 @@
                 }
             }, 300);
         } else {
-             Swal.fire('Error', 'Modal element tidak ditemukan', 'error');
+            Swal.fire('Error', 'Modal element tidak ditemukan', 'error');
         }
     }
 </script><script src="assets/bootstrap/js/bootstrap.min.js"></script><script src="assets/js/script.min.js"></script></body></html>

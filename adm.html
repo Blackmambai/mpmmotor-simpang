@@ -185,9 +185,9 @@
             tbody.innerHTML += `
                 <tr>
                     <td class="fw-bold text-danger">${formatRp(item['Uang Muka'])}</td>
-                    <td>${formatRp(item['12 Bulan'])}</td>
-                    <td>${formatRp(item['24 Bulan'])}</td>
-                    <td>${formatRp(item['36 Bulan'])}</td>
+                    <td>${formatRp(item['11 Bulan'])}</td>
+                    <td>${formatRp(item['17 Bulan'])}</td>
+                    <td>${formatRp(item['23 Bulan'])}</td>
                     <td class="d-flex text-center">
                         <button class="btn edit btn-sm btn-outline-secondary py-0 px-2 me-1" onclick="editData('${item['ID']}')" title="Edit DP"><i class="fas fa-pen fs-5"></i></button>
                         <button class="btn hapus btn-sm btn-outline-danger py-0 px-2" onclick="deleteData('${item['ID']}')" title="Hapus DP"><i class="fas fa-trash-alt fs-5"></i></button>
@@ -250,11 +250,11 @@
         document.getElementById('formOTR').value = item['Harga OTR'];
         document.getElementById('formURL').value = item['URL Gambar'];
         document.getElementById('formDP').value = item['Uang Muka'];
-        document.getElementById('form12').value = item['12 Bulan'];
-        document.getElementById('form18').value = item['18 Bulan'];
-        document.getElementById('form24').value = item['24 Bulan'];
-        document.getElementById('form30').value = item['30 Bulan'];
-        document.getElementById('form36').value = item['36 Bulan'];
+        document.getElementById('form12').value = item['11 Bulan'];
+        document.getElementById('form18').value = item['17 Bulan'];
+        document.getElementById('form24').value = item['23 Bulan'];
+        document.getElementById('form30').value = item['29 Bulan'];
+        document.getElementById('form36').value = item['35 Bulan'];
 
         document.getElementById('formTitle').innerText = `Edit DP: ${formatRp(item['Uang Muka'])}`;
         document.getElementById('btnSubmit').innerText = 'Perbarui Data (Update)';
